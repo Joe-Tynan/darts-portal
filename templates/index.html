@@ -1,0 +1,118 @@
+{% extends '_base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <div class="title-section">
+        <h1>Killer Darts Leaderboard</h1>
+        <div class="buttons">
+            <a href="{% url 'submit_win' %}" class="button" title="Submit Win">Add a Win</a>
+        </div>
+    </div>
+
+    <div class="leaderboard pk-border flex-wrapper">
+        <div class="league">
+            <h2>Champions League</h2>
+            <ul>
+                {% for player in champions_league_players %}
+                    <li class="player-card">
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
+                        <p>{{ player.get_this_years_wins }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="league">
+            <h2>Premier League</h2>
+            <ul>
+                {% for player in premier_league_players %}
+                    <li class="player-card">
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
+                        <p>{{ player.get_this_years_wins }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="league">
+            <h2>Championship</h2>
+            <ul>
+                {% for player in championship_players %}
+                    <li class="player-card">
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
+                        <p>{{ player.get_this_years_wins }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="league">
+            <h2>Vanarama</h2>
+            <ul>
+                {% for player in vanarama_players %}
+                    <li class="player-card">
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
+                        <p>{{ player.get_this_years_wins }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    {% for player in players %}
+        <aside class="sidebar">
+            <a href="#" class="button-close">&times;</a>
+            <div class="sidebar-wrapper">
+                <h3>{{ player.first_name }} {{ player.last_name }}</h3>
+                <ul class="statisitics-wrapper">
+                    <li><p>Games Played: <span>{{ player.games_played.count }}</span></p></li>
+                    <li><p>Win Ratio: <span>{{ player.get_win_ratio }}</span></p></li>
+                    <li><p>Last Win: <span>{{ player.get_last_win }}</span></p></li>
+                    <li><p>Predicted Wins: <span>{{ player.get_predicted_wins }}</span></p></li>
+                    <!--<li><p>Longest Win Streak: <span>[ Streak ]</span></p></li>-->
+                    <li><p>Total Points: <span>{{ player.get_total_points }}</span></p></li>
+                </ul>
+                <div class="form">
+                    <h4>Current Form</h4>
+                    <ul class="form-wrapper">
+                        {% for key, value in player.get_form.items %}
+                        <li class="{{ value }}"><span></span></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!--
+                <div class="wins">
+                    <h4>Killer League Wins</h4>
+                    <ul class="wins-wrapper">
+                        <li>2023</li>
+                    </ul>
+                </div>
+                -->
+            </div>
+        </aside>
+    {% endfor %}
+
+    <div class="views flex-wrapper">
+        <div class="monthly-leaders pk-border">
+            <h3>Monthly Leaders</h3>
+            <ul>
+                {% for player in monthly_leaders %}
+                    <li class="player-card">
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
+                        <p>{{ player.get_this_months_wins }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    
+        <div class="weekly-leaders pk-border">
+            <h3>Weekly Leaders</h3>
+            <ul>
+                {% for player in weekly_leaders %}
+                    <li class="player-card">
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
+                        <p>{{ player.get_this_weeks_wins }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}
