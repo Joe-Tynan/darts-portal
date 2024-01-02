@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pure-bayou-92686-4db9a1b9e2ce.herokuapp.com/']
 
 
 # Application definition
@@ -159,6 +159,7 @@ if ENVIRONMENT == 'production':
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     DEBUG=False
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Heroku
