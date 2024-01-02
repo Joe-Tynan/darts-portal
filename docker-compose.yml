@@ -3,9 +3,10 @@ version: '3.7'
 services:
   web:
     build: .
-    command: python /code/manage.py runserver 0.0.0.0:8000
+    command: gunicorn darts_portal.wsgi -b 0.0.0.0:8000
     environment:
       - SECRET_KEY=django-insecure-^+v=tpcw8e+aq1zc(j-1qf5%w*z^a-5*zfjeb!jxy(t=zv*bdg
+      - ENVIRONMENT=development
       - DEBUG=True
     volumes:
       - .:/code
@@ -16,8 +17,6 @@ services:
 
   db:
     image: postgres
-    environment:
-      - POSTGRES_PASSWORD=postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
