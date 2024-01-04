@@ -9,11 +9,26 @@ class CustomUser(AbstractUser):
     def get_this_years_wins(self):
         return self.wins.all().filter(date__contains=datetime.date.today().year).count()
     
+    def get_this_years_runner_ups(self):
+        return self.runner_ups.all().filter(date__contains=datetime.date.today().year).count()
+    
     def get_this_months_wins(self):
         return self.wins.all().filter(date__contains=datetime.date.today().month).count()
     
+    def get_this_months_runner_ups(self):
+        return self.runner_ups.all().filter(date__contains=datetime.date.today().month).count()
+    
+    def get_this_months_games_played(self):
+        return self.games_played.filter(date__week=datetime.date.today().isocalendar()[1]).count()
+    
     def get_this_weeks_wins(self):
         return self.wins.all().filter(date__week=datetime.date.today().isocalendar()[1]).count()
+
+    def get_this_weeks_runner_ups(self):
+        return self.runner_ups.all().filter(date__week=datetime.date.today().isocalendar()[1]).count()
+
+    def get_this_weeks_games_played(self):
+        return self.games_played.filter(date__week=datetime.date.today().isocalendar()[1]).count()
 
     def get_win_ratio(self):
         if( self.games_played.count() > 0  ):

@@ -10,6 +10,7 @@ whitenoise = "*"
 gunicorn = "*"
 django-environ = "*"
 dj-database-url = "*"
+django-lockdown = "*"
 
 [dev-packages]
 

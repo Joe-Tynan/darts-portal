@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
+    # Third Party
+    'lockdown',
+
     # Local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
@@ -46,6 +49,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Third Party
+    'lockdown.middleware.LockdownMiddleware',
+
+    # Custom
+    'users.middleware.filter_office_ip_middleware.FilterOfficeIPMiddleware'
 ]
 
 ROOT_URLCONF = 'darts_portal.urls'
@@ -169,3 +178,8 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 
 DATABASES['default'].update(db_from_env)
+
+
+# Lockdown Settings
+
+LOCKDOWN_PASSWORDS = ('pixelpreview', 'preview')

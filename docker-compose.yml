@@ -8,6 +8,7 @@ services:
       - SECRET_KEY=django-insecure-^+v=tpcw8e+aq1zc(j-1qf5%w*z^a-5*zfjeb!jxy(t=zv*bdg
       - ENVIRONMENT=development
       - DEBUG=True
+      - LOCKDOWN_ENABLED=True
     volumes:
       - .:/code
     ports:

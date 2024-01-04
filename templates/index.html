@@ -16,8 +16,8 @@
             <ul>
                 {% for player in champions_league_players %}
                     <li class="player-card">
-                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
-                        <p>{{ player.get_this_years_wins }}</p>
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                        <p><span class="win-count">{{ player.get_this_years_wins }}</span> (RU{{ player.get_this_years_runner_ups }} P{{ player.games_played.count }})</p>
                     </li>
                 {% endfor %}
             </ul>
@@ -27,8 +27,8 @@
             <ul>
                 {% for player in premier_league_players %}
                     <li class="player-card">
-                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
-                        <p>{{ player.get_this_years_wins }}</p>
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                        <p><span class="win-count">{{ player.get_this_years_wins }}</span> (RU{{ player.get_this_years_runner_ups }} P{{ player.games_played.count }})</p>
                     </li>
                 {% endfor %}
             </ul>
@@ -38,8 +38,8 @@
             <ul>
                 {% for player in championship_players %}
                     <li class="player-card">
-                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
-                        <p>{{ player.get_this_years_wins }}</p>
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                        <p><span class="win-count">{{ player.get_this_years_wins }}</span> (RU{{ player.get_this_years_runner_ups }} P{{ player.games_played.count }})</p>
                     </li>
                 {% endfor %}
             </ul>
@@ -49,8 +49,8 @@
             <ul>
                 {% for player in vanarama_players %}
                     <li class="player-card">
-                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
-                        <p>{{ player.get_this_years_wins }}</p>
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                        <p><span class="win-count">{{ player.get_this_years_wins }}</span> (RU{{ player.get_this_years_runner_ups }} P{{ player.games_played.count }})</p>
                     </li>
                 {% endfor %}
             </ul>
@@ -96,8 +96,8 @@
             <ul>
                 {% for player in monthly_leaders %}
                     <li class="player-card">
-                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
-                        <p>{{ player.get_this_months_wins }}</p>
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                        <p><span class="win-count">{{ player.get_this_months_wins }}</span> (RU{{ player.get_this_months_runner_ups }} P{{ player.get_this_months_games_played }})</p>
                     </li>
                 {% endfor %}
             </ul>
@@ -108,8 +108,8 @@
             <ul>
                 {% for player in weekly_leaders %}
                     <li class="player-card">
-                        <p>{{ player.first_name }}{% if player.nickname %} <span>'{{ player.nickname }}'</span> {% endif %} {{ player.last_name }}</p>
-                        <p>{{ player.get_this_weeks_wins }}</p>
+                        <p>{{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                        <p><span class="win-count">{{ player.get_this_weeks_wins }}</span> (RU{{ player.get_this_weeks_runner_ups }} P{{ player.get_this_weeks_games_played }})</p>
                     </li>
                 {% endfor %}
             </ul>

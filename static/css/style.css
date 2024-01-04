@@ -142,8 +142,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .flex-wrapper .league ul li p span {
-    font-style: italic;
-    font-weight: 300;
     color: #005aff;
 }
 
@@ -320,7 +318,9 @@ form .button {
 }
 
 .views ul li p span {
-    font-style: italic;
-    font-weight: 300;
+    color: #005aff;
+}
+
+.win-count {
     color: #005aff;
 }
