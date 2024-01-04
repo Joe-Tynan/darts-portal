@@ -14,7 +14,7 @@ class LeagueTableView(ListView):
     context_object_name = 'players'
     
     def get_queryset(self):
-        return CustomUser.objects.annotate(num_wins=Count('wins')).order_by('-num_wins')
+        return CustomUser.objects.annotate(num_wins=Count('wins')).order_by('-num_wins', 'wins__date')
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
