@@ -11,3 +11,6 @@ class Win(models.Model):
 
     def __str__(self):
         return str(self.date)
+    
+    def get_this_years_games_count(self):
+        return Win.objects.filter(date__contains=datetime.date.today().year).count()

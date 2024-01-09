@@ -333,3 +333,27 @@ form .button {
 #id_participants {
     height: 200px;
 }
+
+.killer-stats h3 {
+    text-align: center;
+}
+
+.killer-stats .flex-wrapper {
+    margin-top: 24px;
+    justify-content: center;
+}
+
+.killer-stats .flex-wrapper p {
+    background-color: #ffffff;
+    padding: 18px;
+    text-align: center;
+    border: solid 1px #005aff;
+    border-radius: 2px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.killer-stats .flex-wrapper p span {
+    display: block;
+    color: #005aff;
+}
