@@ -63,13 +63,15 @@
             <div class="sidebar-wrapper">
                 <h3>{{ player.first_name }} {{ player.last_name }}</h3>
                 <ul class="statisitics-wrapper">
+                    <li><p>Points: <span>{{ player.get_this_years_wins }}</span></p></li>
+                    <li><p>Runner Ups: <span>{{ player.get_this_years_runner_ups }}</span></p></li>
                     <li><p>Games Played: <span>{{ player.get_this_years_games_played }}</span></p></li>
-                    <li><p>Win Ratio: <span>{{ player.get_win_ratio }}</span></p></li>
                     <li><p>Last Win: <span>{{ player.get_last_win }}</span></p></li>
                     <li><p>Predicted Wins: <span>{{ player.get_predicted_wins }}</span></p></li>
+                    <li><p>Win Ratio: <span>{{ player.get_win_ratio }}</span></p></li>
+                    <li><p>All Time Games Played: <span>{{ player.games_played.count }}</span></p></li>
+                    <li><p>All Time Total Points: <span>{{ player.get_total_points }}</span></p></li>
                     <!--<li><p>Longest Win Streak: <span>[ Streak ]</span></p></li>-->
-                    <li><p>Total Games Played: <span>{{ player.games_played.count }}</span></p></li>
-                    <li><p>Total Points: <span>{{ player.get_total_points }}</span></p></li>
                 </ul>
                 <div class="form">
                     <h4>Current Form</h4>
