@@ -321,6 +321,11 @@ form .button {
     color: #005aff;
 }
 
+.game-info {
+    font-weight: 400 !important;
+}
+
 .win-count {
     color: #005aff;
+    font-weight: 500 !important;
 }
