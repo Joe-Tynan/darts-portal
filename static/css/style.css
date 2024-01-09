@@ -288,7 +288,7 @@ form .button {
 }
 
 .views {
-    margin-top: 24px;
+    margin: 24px 0;
 }
 
 .views .monthly-leaders, .views .weekly-leaders {
@@ -328,4 +328,8 @@ form .button {
 .win-count {
     color: #005aff;
     font-weight: 500 !important;
+}
+
+#id_participants {
+    height: 200px;
 }

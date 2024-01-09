@@ -29,6 +29,8 @@ class LeagueTableView(ListView):
         context["monthly_leaders"] = CustomUser.objects.annotate(num_wins=Count('wins')).filter(wins__date__contains=datetime.date.today().month).order_by('-num_wins', 'wins__date')
         context["weekly_leaders"] = CustomUser.objects.annotate(num_wins=Count('wins')).filter(wins__date__week=datetime.date.today().isocalendar()[1]).order_by('-num_wins', 'wins__date')
 
+        context["wins"] = Win.objects.all()
+
         # Return context
         return context
     
