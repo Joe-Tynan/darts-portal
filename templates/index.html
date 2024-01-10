@@ -10,6 +10,21 @@
         </div>
     </div>
 
+    <div class="killer-stats pk-border">
+        <div>
+            <h3>{% now "l j F" %}</h3>
+            <div class="flex-wrapper">
+                <p>Winner: <span>{{ todays_result.0.winner.first_name }}</span><br>Runner Up: <span>{{ todays_result.0.runner_up.first_name }}</span></p>
+            </div>
+        </div>
+        <div>
+            <h3>This Year at a Glance</h3>
+            <div class="flex-wrapper">
+                <p>Games Played: <span class="block">{{ this_years_game_count }}</span></p>
+            </div>
+        </div>
+    </div>
+
     <div class="leaderboard pk-border flex-wrapper">
         <div class="league">
             <h2>Champions League</h2>
@@ -66,11 +81,13 @@
                     <li><p>Wins: <span>{{ player.get_this_years_wins }}</span></p></li>
                     <li><p>Runner Ups: <span>{{ player.get_this_years_runner_ups }}</span></p></li>
                     <li><p>Games Played: <span>{{ player.get_this_years_games_played }}</span></p></li>
-                    <li><p>Last Win: <span>{{ player.get_last_win }}</span></p></li>
+                    
+                    <li class="mt-36"><p>Last Win: <span>{{ player.get_last_win }}</span></p></li>
                     <li><p>Predicted Wins: <span>{{ player.get_predicted_wins }}</span></p></li>
                     <li><p>Win Ratio: <span>{{ player.get_win_ratio }}</span></p></li>
-                    <!--<li><p>All Time Total Wins: <span>{{ player.get_total_points }}</span></p></li>
-                    <li><p>All Time Games Played: <span>{{ player.games_played.count }}</span></p></li>-->
+                    
+                    <li class="mt-36"><p>All-time Wins: <span>{{ player.get_total_points }}</span></p></li>
+                    <li><p>All-time Games Played: <span>{{ player.games_played.count }}</span></p></li>
                     <!--<li><p>Longest Win Streak: <span>[ Streak ]</span></p></li>-->
                 </ul>
                 <div class="form">
@@ -116,13 +133,6 @@
                     </li>
                 {% endfor %}
             </ul>
-        </div>
-    </div>
-
-    <div class="killer-stats pk-border">
-        <h3>This Year at a Glance</h3>
-        <div class="flex-wrapper">
-            <p>Games Played: <span>{{ this_years_game_count }}</span></p>
         </div>
     </div>
 {% endblock content %}

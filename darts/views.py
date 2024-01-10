@@ -5,7 +5,7 @@ from django.db.models import Count
 from django.urls import reverse
 
 from users.models import CustomUser
-from .models import Win
+from .models import Win, Bet
 from .forms import WinCreateForm
 
 class LeagueTableView(ListView):
@@ -31,6 +31,7 @@ class LeagueTableView(ListView):
 
         context["this_years_game_count"] = Win.objects.filter(date__contains=datetime.date.today().year).count()
 
+        context["todays_result"] = Win.objects.filter(date__year=datetime.date.today().year, date__month=datetime.date.today().month, date__day=datetime.date.today().day)
         # Return context
         return context
     
@@ -42,3 +43,14 @@ class WinCreateView(CreateView):
     
     def get_success_url(self):
         return reverse('home')
+    
+class AllGamesView(ListView):
+    model = Win
+    ordering = ['-date']
+    template_name = 'all_games.html'
+    context_object_name = 'all_games'
+
+class AllBetsView(ListView):
+    model = Bet
+    template_name = 'all_bets.html'
+    context_object_name = 'all_bets'

@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
 body {
     background-color: #19224a;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 42px 0;
 }
@@ -11,6 +11,10 @@ body {
     max-width: 1600px;
     width: 90vw;
     margin: 0 auto;
+}
+
+.mt-36 {
+    margin-top: 36px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -288,7 +292,7 @@ form .button {
 }
 
 .views {
-    margin: 24px 0;
+    margin-top: 24px;
 }
 
 .views .monthly-leaders, .views .weekly-leaders {
@@ -334,6 +338,12 @@ form .button {
     height: 320px;
 }
 
+.killer-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
 .killer-stats h3 {
     text-align: center;
 }
@@ -354,6 +364,22 @@ form .button {
 }
 
 .killer-stats .flex-wrapper p span {
-    display: block;
     color: #005aff;
+}
+
+.killer-stats .flex-wrapper p span.block {
+    display: block;
+} 
+
+.white-text {
+    color: #ffffff;
+}
+
+.svg-wrapper {
+    text-align: center;
+}
+
+.svg-wrapper svg {
+    max-width: 500px;
+    height: fit-content;
 }

@@ -14,3 +14,9 @@ class Win(models.Model):
     
     def get_this_years_games_count(self):
         return Win.objects.filter(date__contains=datetime.date.today().year).count()
+    
+class Bet(models.Model):
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.description)
