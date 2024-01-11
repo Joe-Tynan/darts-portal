@@ -20,3 +20,11 @@ class Bet(models.Model):
 
     def __str__(self):
         return str(self.description)
+    
+class Champion(models.Model):
+    year = models.DateField()
+    user =  models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="championships")
+    wins = models.IntegerField()
+
+    def __str__(self):
+        return str(self.year.year)
