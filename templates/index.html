@@ -6,7 +6,7 @@
     <div class="title-section">
         <h1>Killer Darts Leaderboard</h1>
         <div class="buttons">
-            <a href="{% url 'submit_win' %}" class="button" title="Submit Win">Add a Win</a>
+            <a href="{% url 'submit_win' %}" class="button" title="Submit Win">Submit a Game</a>
         </div>
     </div>
 
@@ -114,7 +114,7 @@
 
     <div class="views flex-wrapper">
         <div class="monthly-leaders pk-border">
-            <h3>Monthly Leaders</h3>
+            <h3>Monthly Top 3</h3>
             <ul>
                 {% for player in monthly_leaders %}
                     <li class="player-card">
@@ -126,7 +126,7 @@
         </div>
     
         <div class="weekly-leaders pk-border">
-            <h3>Weekly Leaders</h3>
+            <h3>Weekly Top 3</h3>
             <ul>
                 {% for player in weekly_leaders %}
                     <li class="player-card">

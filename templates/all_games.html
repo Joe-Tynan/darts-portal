@@ -7,11 +7,11 @@
         <h1>All Killer Results</h1>
     </div>
 
-    <div class="roadmap pk-border">
+    <div class="all-games pk-border">
         <ul>
             {% for game in all_games %}
                 <li class="game-card">
-                    <p>{{ game.date }} - Winner: {{ game.winner.first_name }} {{ game.winner.last_name }}</p>
+                    <p>{{ game.date|date:"D j M" }} | W: {{ game.winner.first_name }} {{ game.winner.last_name }} | RU: {{ game.runner_up.first_name }} {{ game.runner_up.last_name }}</p>
                 </li>
             {% endfor %}
         </ul>

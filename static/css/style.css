@@ -332,6 +332,8 @@ form .button {
 .win-count {
     color: #005aff;
     font-weight: 500 !important;
+    font-size: 17px;
+    margin-left: 12px;
 }
 
 #id_participants {
@@ -388,4 +390,12 @@ form .button {
 .svg-wrapper svg {
     max-width: 500px;
     height: fit-content;
+}
+
+.all-games ul {
+    list-style-type: none;
+}
+
+.all-games ul li {
+    color: #ffffff;
 }
