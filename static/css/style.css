@@ -342,6 +342,12 @@ form .button {
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
+    gap: 24px;
+}
+
+.killer-stats .pk-border {
+    flex-basis: 0;
+    flex-grow: 1;
 }
 
 .killer-stats h3 {

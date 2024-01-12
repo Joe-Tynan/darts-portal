@@ -10,14 +10,16 @@
         </div>
     </div>
 
-    <div class="killer-stats pk-border">
-        <div>
+    <div class="killer-stats">
+        <div class="pk-border">
             <h3>{{ last_result.0.date|date:"l j F" }}</h3>
             <div class="flex-wrapper">
                 <p>Winner: <span>{{ last_result.0.winner.first_name }} {{ last_result.0.winner.last_name }}</span><br>Runner Up: <span>{{ last_result.0.runner_up.first_name }} {{ last_result.0.runner_up.last_name }}</span></p>
             </div>
         </div>
-        <div>
+        <div class="pk-border"></div>
+        <div class="pk-border"></div>
+        <div class="pk-border">
             <h3>This Year at a Glance</h3>
             <div class="flex-wrapper">
                 <p>Games Played: <span class="block">{{ this_years_game_count }}</span></p>
