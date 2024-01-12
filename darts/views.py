@@ -31,7 +31,7 @@ class LeagueTableView(ListView):
 
         context["this_years_game_count"] = Win.objects.filter(date__contains=datetime.date.today().year).count()
 
-        context["todays_result"] = Win.objects.filter(date__year=datetime.date.today().year, date__month=datetime.date.today().month, date__day=datetime.date.today().day)
+        context["last_result"] = Win.objects.order_by('-date')[:1]
         
         # Return context
         return context

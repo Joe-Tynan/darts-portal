@@ -12,9 +12,9 @@
 
     <div class="killer-stats pk-border">
         <div>
-            <h3>{% now "l j F" %}</h3>
+            <h3>{{ last_result.0.date|date:"l j F" }}</h3>
             <div class="flex-wrapper">
-                <p>Winner: <span>{{ todays_result.0.winner.first_name }}</span><br>Runner Up: <span>{{ todays_result.0.runner_up.first_name }}</span></p>
+                <p>Winner: <span>{{ last_result.0.winner.first_name }} {{ last_result.0.winner.last_name }}</span><br>Runner Up: <span>{{ last_result.0.runner_up.first_name }} {{ last_result.0.runner_up.last_name }}</span></p>
             </div>
         </div>
         <div>
