@@ -54,7 +54,7 @@ class CustomUser(AbstractUser):
 
     def get_form(self):
         results = {}
-        last_5_games = self.games_played.order_by('date')[:5]
+        last_5_games = self.games_played.order_by('-date')[:5]
 
         for game in last_5_games:
             if game.winner.id == self.id:

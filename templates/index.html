@@ -94,6 +94,7 @@
                 </ul>
                 <div class="form">
                     <h4>Current Form</h4>
+                    {{ player.get_form }}
                     <ul class="form-wrapper">
                         {% for key, value in player.get_form.items %}
                         <li class="{{ value }}"><span></span></li>
