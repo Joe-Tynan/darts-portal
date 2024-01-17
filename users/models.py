@@ -44,8 +44,8 @@ class CustomUser(AbstractUser):
             return 'Not Played Yet'
 
     def get_last_win(self):
-        if( self.wins.order_by('date').first() != None ):
-            return self.wins.order_by('date').first()
+        if( self.wins.order_by('-date').first() != None ):
+            return self.wins.order_by('-date').first()
         else:
             return 'NEVER!'
 
