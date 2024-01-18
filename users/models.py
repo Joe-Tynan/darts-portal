@@ -54,17 +54,47 @@ class CustomUser(AbstractUser):
 
     def get_form(self):
         results = {}
+        form = 0
         last_5_games = self.games_played.order_by('-date')[:5]
 
         for game in last_5_games:
             if game.winner.id == self.id:
                 results[game.id] = 'win'
+                form += 2
             elif game.runner_up.id == self.id:
                 results[game.id] = 'runner-up'
+                form += 1
             else:
                 results[game.id] = 'loss'
 
         return results
+    
+    def get_form_score(self):
+        form = 0
+        last_5_games = self.games_played.order_by('-date')[:5]
+
+        for game in last_5_games:
+            if game.winner.id == self.id:
+                form += 0.2
+            elif game.runner_up.id == self.id:
+                form += 0.1
+
+        return form
+    
+    def get_form_emoji(self):
+        form = float(self.get_form_score())
+        emoji = ''
+
+        if form >= 0.7:
+            emoji = '🔥'
+        elif form >= 0.4:
+            emoji = '👌'
+        elif form >= 0.1:
+            emoji = '😰'
+        else:
+            emoji = '💀'
+
+        return emoji
 
     def get_longest_win_streak(self):
         pass
