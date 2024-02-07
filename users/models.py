@@ -1,5 +1,6 @@
 import datetime
 
+from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -18,13 +19,13 @@ class CustomUser(AbstractUser):
     
     # Monthly Functions
     def get_this_months_wins(self):
-        return self.wins.all().filter(date__contains=datetime.date.today().month).count()
+        return self.wins.all().filter(date__month=datetime.date.today().month).count()
     
     def get_this_months_runner_ups(self):
-        return self.runner_ups.all().filter(date__contains=datetime.date.today().month).count()
+        return self.runner_ups.all().filter(date__month=datetime.date.today().month).count()
     
     def get_this_months_games_played(self):
-        return self.games_played.filter(date__contains=datetime.date.today().month).count()
+        return self.games_played.filter(date__month=datetime.date.today().month).count()
     
     # Weekly Functions
     def get_this_weeks_wins(self):
