@@ -270,7 +270,7 @@ form .button {
     padding: 0;
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
+    flex-direction: row-reverse;
     margin-bottom: 42px;
 }
 

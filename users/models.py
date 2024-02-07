@@ -55,16 +55,13 @@ class CustomUser(AbstractUser):
 
     def get_form(self):
         results = {}
-        form = 0
-        last_5_games = self.games_played.order_by('-date')[:5]
+        last_10_games = self.games_played.order_by('-date')[:10]
 
-        for game in last_5_games:
+        for game in last_10_games:
             if game.winner.id == self.id:
                 results[game.id] = 'win'
-                form += 2
             elif game.runner_up.id == self.id:
                 results[game.id] = 'runner-up'
-                form += 1
             else:
                 results[game.id] = 'loss'
 
@@ -72,13 +69,13 @@ class CustomUser(AbstractUser):
     
     def get_form_score(self):
         form = 0
-        last_5_games = self.games_played.order_by('-date')[:5]
+        last_10_games = self.games_played.order_by('-date')[:10]
 
-        for game in last_5_games:
+        for game in last_10_games:
             if game.winner.id == self.id:
-                form += 0.2
-            elif game.runner_up.id == self.id:
                 form += 0.1
+            elif game.runner_up.id == self.id:
+                form += 0.05
 
         return form
     
