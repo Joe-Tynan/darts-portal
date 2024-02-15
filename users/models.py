@@ -73,9 +73,9 @@ class CustomUser(AbstractUser):
 
         for game in last_10_games:
             if game.winner.id == self.id:
-                form += 0.1
+                form += 1
             elif game.runner_up.id == self.id:
-                form += 0.05
+                form += 0.5
 
         return form
     
@@ -83,14 +83,24 @@ class CustomUser(AbstractUser):
         form = float(self.get_form_score())
         emoji = ''
 
-        if form >= 0.7:
+        if form >= 10:
+            emoji = '👑'
+        elif form >= 9:
+            emoji = '💎'
+        elif form >= 7.5:
+            emoji = '🦄'
+        elif form >= 6:
+            emoji = '🤯'
+        elif form >= 4.5:
             emoji = '🔥'
-        elif form >= 0.4:
-            emoji = '👌'
-        elif form >= 0.1:
-            emoji = '😰'
+        elif form >= 3:
+            emoji = '🤌'
+        elif form >= 1.5:
+            emoji = '😐'
+        elif form >= 0.5:
+            emoji = '🐌'
         else:
-            emoji = '💀'
+            emoji = '💩'
 
         return emoji
 
