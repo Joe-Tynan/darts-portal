@@ -1,8 +1,9 @@
 import datetime
 
-from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+
+from darts.models import Win
 
 class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=200, blank=True)
@@ -16,6 +17,12 @@ class CustomUser(AbstractUser):
     
     def get_this_years_games_played(self):
         return self.games_played.filter(date__contains=datetime.date.today().year).count()
+    
+    def get_this_years_games_played_percentage(self):
+        games_played_by_user = self.games_played.filter(date__contains=datetime.date.today().year).count()
+        total_games_played = Win.objects.filter(date__contains=datetime.date.today().year).count()
+
+        return round(((games_played_by_user / total_games_played) * 100), 1)
     
     # Monthly Functions
     def get_this_months_wins(self):
@@ -47,6 +54,12 @@ class CustomUser(AbstractUser):
     def get_last_win(self):
         if( self.wins.order_by('-date').first() != None ):
             return self.wins.order_by('-date').first()
+        else:
+            return 'NEVER!'
+        
+    def get_last_game_played(self):
+        if( self.games_played.order_by('-date').first() != None ):
+            return self.games_played.order_by('-date').first()
         else:
             return 'NEVER!'
 

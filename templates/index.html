@@ -83,8 +83,10 @@
                     <li><p>Wins: <span>{{ player.get_this_years_wins }}</span></p></li>
                     <li><p>Runner Ups: <span>{{ player.get_this_years_runner_ups }}</span></p></li>
                     <li><p>Games Played: <span>{{ player.get_this_years_games_played }}</span></p></li>
+                    <li><p>Percentage of Games Played: <span>{{ player.get_this_years_games_played_percentage }}%</span></p></li>
                     
-                    <li class="mt-36"><p>Last Win: <span>{{ player.get_last_win }}</span></p></li>
+                    <li class="mt-36"><p>Last Played: <span>{{ player.get_last_game_played }}</span></p></li>
+                    <li><p>Last Win: <span>{{ player.get_last_win }}</span></p></li>
                     <li><p>Predicted Wins: <span>{{ player.get_predicted_wins }}</span></p></li>
                     <li><p>Win Ratio: <span>{{ player.get_win_ratio }}</span></p></li>
                     
@@ -93,7 +95,7 @@
                     <!--<li><p>Longest Win Streak: <span>[ Streak ]</span></p></li>-->
                 </ul>
                 <div class="form">
-                    <h4>Current Form: {{ player.get_form_score|floatformat:2 }}</h4>
+                    <h4>Current Form: {{ player.get_form_score|floatformat:1 }}</h4>
                     <ul class="form-wrapper">
                         {% for key, value in player.get_form.items %}
                         <li class="{{ value }}"><span></span></li>
