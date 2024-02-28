@@ -120,8 +120,8 @@
             <ul>
                 {% for player in monthly_leaders %}
                     <li class="player-card">
-                        <p>{{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
-                        <p class="game-info">(P{{ player.get_this_months_games_played }} RU{{ player.get_this_months_runner_ups }}) <span class="win-count">{{ player.get_this_months_wins }}</span></p>
+                        <p>{{ player.first_name }} {{ player.last_name }}</p>
+                        <p class="game-info"><span class="win-count">{{ player.get_this_months_wins }}</span></p>
                     </li>
                 {% endfor %}
             </ul>
@@ -132,8 +132,8 @@
             <ul>
                 {% for player in weekly_leaders %}
                     <li class="player-card">
-                        <p>{{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
-                        <p class="game-info">(P{{ player.get_this_weeks_games_played }} RU{{ player.get_this_weeks_runner_ups }}) <span class="win-count">{{ player.get_this_weeks_wins }}</span></p>
+                        <p>{{ player.first_name }} {{ player.last_name }}</p>
+                        <p class="game-info"><span class="win-count">{{ player.get_this_weeks_wins }}</span></p>
                     </li>
                 {% endfor %}
             </ul>
