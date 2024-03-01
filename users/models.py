@@ -1,4 +1,5 @@
 import datetime
+from datetime import timedelta
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -52,14 +53,32 @@ class CustomUser(AbstractUser):
             return 'Not Played Yet'
 
     def get_last_win(self):
-        if( self.wins.order_by('-date').first() != None ):
-            return self.wins.order_by('-date').first()
+        today = datetime.date.today()
+        yesterday = datetime.date.today() - timedelta(1)
+        last_win = self.wins.order_by('-date').first()
+
+        if( last_win != None ):
+            if( last_win.date == today ):
+                return 'Today'
+            elif( last_win.date == yesterday ):
+                return 'Yesterday'
+            else:
+                return last_win.date.strftime('%a %d %b %Y')
         else:
             return 'NEVER!'
         
     def get_last_game_played(self):
-        if( self.games_played.order_by('-date').first() != None ):
-            return self.games_played.order_by('-date').first()
+        today = datetime.date.today()
+        yesterday = datetime.date.today() - timedelta(1)
+        last_game_played = self.games_played.order_by('-date').first()
+
+        if( last_game_played != None ):
+            if( last_game_played.date == today ):
+                return 'Today'
+            elif( last_game_played.date == yesterday ):
+                return 'Yesterday'
+            else:
+                return last_game_played.date.strftime('%a %d %b %Y')
         else:
             return 'NEVER!'
 
