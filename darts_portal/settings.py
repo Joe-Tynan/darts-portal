@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-ENVIRONMENT = os.environ.get('ENVIRONMENT')
+ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'darts.apps.DartsConfig',
+
+    # Third Party
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -46,9 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # Custom
-    'users.middleware.filter_office_ip_middleware.FilterOfficeIPMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'darts_portal.urls'
@@ -161,9 +162,8 @@ if ENVIRONMENT == 'production':
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    DEBUG=True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
+    SHOW_TOOLBAR_CALLBACK = False
 
 # Heroku
 
@@ -172,3 +172,15 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 
 DATABASES['default'].update(db_from_env)
+
+
+# Debug Toolbar
+
+import socket
+
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
+
+if ENVIRONMENT == 'development':
+    SHOW_TOOLBAR_CALLBACK = True
