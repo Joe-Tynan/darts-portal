@@ -8,13 +8,30 @@
     </div>
 
     <div class="all-games pk-border">
-        <ul>
-            {% for game in all_games %}
-                <li class="game-card">
-                    <p>{{ game.date|date:"D j M" }} | W: {{ game.winner.first_name }} {{ game.winner.last_name }} | RU: {{ game.runner_up.first_name }} {{ game.runner_up.last_name }}</p>
-                </li>
-            {% endfor %}
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Date</h3>
+                    </th>
+                    <th>
+                        <h3>Winner</h3>
+                    </th>
+                    <th>
+                        <h3>Runner Up</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in all_games %}
+                    <tr>
+                        <td><p>{{ game.date|date:"D j M" }}</p></td>
+                        <td><p>{{ game.winner.first_name }} {{ game.winner.last_name }}</p></td>
+                        <td><p>{{ game.runner_up.first_name }} {{ game.runner_up.last_name }}</p></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
 {% endblock content %}

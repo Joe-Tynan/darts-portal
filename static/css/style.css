@@ -399,3 +399,21 @@ form .button {
 .all-games ul li {
     color: #ffffff;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+table thead th {
+    padding: 18px;
+}
+
+table tbody td {
+    border: solid 1px #005aff;
+    padding: 18px;
+    text-align: center;
+}
+
+table tbody td p {
+    color: #ffffff;
+}
