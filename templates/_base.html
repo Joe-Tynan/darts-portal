@@ -12,13 +12,13 @@
         <div class="nav">
             <div class="primary-container">
                 <div class="flex-wrapper">
-                    <a href="{% url 'home' %}" class="logo" title="Home">
+                    <a href="{% url 'darts:home' %}" class="logo" title="Home">
                         <img src="{% static 'images/logo.png' %}" alt="Pixel Kicks">
                     </a>
                     <ul class="menu">
-                        <li><a href="{% url 'home' %}" title="Leaderboard">Killer Leaderboard</a></li>
-                        <li><a href="{% url 'all_games' %}" title="Leaderboard">All Results</a></li>
-                        <li><a href="{% url 'bets' %}" title="Leaderboard">Bets</a></li>
+                        <li><a href="{% url 'darts:home' %}" title="Leaderboard">Killer Leaderboard</a></li>
+                        <li><a href="{% url 'darts:all_games' %}" title="Leaderboard">All Results</a></li>
+                        <li><a href="{% url 'darts:bets' %}" title="Leaderboard">Bets</a></li>
                     </ul>
                 </div>
             </div>
