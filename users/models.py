@@ -5,9 +5,12 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from darts.models import Win
+from karting.models import LapTime
 
 class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=200, blank=True)
+    plays_darts = models.BooleanField(default=True)
+    does_karting = models.BooleanField(default=True)
 
     # Yearly Functions
     def get_this_years_wins(self):
@@ -83,7 +86,12 @@ class CustomUser(AbstractUser):
             return 'NEVER!'
 
     def get_predicted_wins(self):
-        return round((251 * self.get_win_ratio()), 2)
+        last_game_played = self.games_played.order_by('-date').first()
+
+        if( last_game_played != None ):
+            return round((251 * self.get_win_ratio()), 2)
+        else:
+            return 0
 
     def get_form(self):
         results = {}
@@ -141,3 +149,7 @@ class CustomUser(AbstractUser):
 
     def get_total_points(self):
         return self.wins.count()
+    
+    # Karting Functions #
+    def get_best_lap_time(self):
+        return self.lap_times.first()

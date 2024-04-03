@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'darts.apps.DartsConfig',
+    'karting.apps.KartingConfig',
 
     # Third Party
     'debug_toolbar',
@@ -180,7 +181,6 @@ import socket
 
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
-
 
 if ENVIRONMENT == 'development':
     SHOW_TOOLBAR_CALLBACK = True
