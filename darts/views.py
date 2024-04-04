@@ -43,7 +43,7 @@ class WinCreateView(CreateView):
     form = WinCreateForm
     
     def get_success_url(self):
-        return reverse('home')
+        return reverse('darts:home')
     
 class AllGamesView(ListView):
     model = Win
