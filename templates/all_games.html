@@ -7,7 +7,7 @@
         <h1>All Killer Results</h1>
     </div>
 
-    <div class="all-games pk-border">
+    <div class="all-games">
         <table>
             <thead>
                 <tr>
@@ -20,14 +20,24 @@
                     <th>
                         <h3>Runner Up</h3>
                     </th>
+                    <th>
+                        <h3>Losers</h3>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 {% for game in all_games %}
                     <tr>
-                        <td><p>{{ game.date|date:"D j M" }}</p></td>
-                        <td><p>{{ game.winner.first_name }} {{ game.winner.last_name }}</p></td>
-                        <td><p>{{ game.runner_up.first_name }} {{ game.runner_up.last_name }}</p></td>
+                        <td class="narrow align-left"><p>{{ game.date|date:"D d M" }}</p></td>
+                        <td class="narrow"><p>{{ game.winner.first_name }} {{ game.winner.last_name }}</p></td>
+                        <td class="narrow"><p>{{ game.runner_up.first_name }} {{ game.runner_up.last_name }}</p></td>
+                        <td class="align-left">
+                            <p>
+                                {% for loser in game.participants.all %}
+                                    {{ loser.first_name }} {{ loser.last_name }}{% if forloop.last == False %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

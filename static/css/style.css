@@ -17,6 +17,10 @@ body {
     margin-top: 36px;
 }
 
+.align-left {
+    text-align: left;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
     margin: 0;
@@ -401,17 +405,23 @@ form .button {
 }
 
 table {
+    width: 100%;
     border-collapse: collapse;
 }
 
 table thead th {
-    padding: 18px;
+    padding: 18px 0;
 }
 
 table tbody td {
     border: solid 1px #005aff;
-    padding: 18px;
+    padding: 0 18px;
     text-align: center;
+    height: 75px;
+}
+
+table tbody td.narrow {
+    width: 15%;
 }
 
 table tbody td p {
