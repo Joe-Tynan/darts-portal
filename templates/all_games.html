@@ -34,7 +34,9 @@
                         <td class="align-left">
                             <p>
                                 {% for loser in game.participants.all %}
-                                    {{ loser.first_name }} {{ loser.last_name }}{% if forloop.last == False %}, {% endif %}
+                                    {% if loser.pk != game.winner.pk and loser.pk != game.runner_up.pk %}
+                                        <span>{{ loser.first_name }} {{ loser.last_name }}, </span>
+                                    {% endif %}
                                 {% endfor %}
                             </p>
                         </td>

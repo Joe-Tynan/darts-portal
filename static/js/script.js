@@ -18,3 +18,13 @@ for(let i = 0; i < closeButtons.length; i++) {
         }
     });
 }
+
+let allGamesTable = document.querySelectorAll('table tr');
+
+for(let i = 0; i < allGamesTable.length; i++) {
+    let lastLoser = allGamesTable[i].querySelector('td:last-of-type span:last-of-type');
+
+    if( lastLoser ) {
+        lastLoser.innerHTML.replace(', ', '');
+    }
+}
