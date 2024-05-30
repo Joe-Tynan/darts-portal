@@ -21,10 +21,10 @@ class LeagueTableView(ListView):
         context = super().get_context_data(**kwargs)
         
         # Add in custom QuerySets
-        context["champions_league_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[:4]
-        context["premier_league_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[4:8]
-        context["championship_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[8:12]
-        context["vanarama_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[12:16]
+        context["champions_league_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[:3]
+        context["premier_league_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[3:6]
+        context["championship_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[6:9]
+        context["vanarama_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[9:]
 
         context["monthly_leaders"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__month=datetime.date.today().month).order_by('-num_wins', 'last_win').distinct()[:3]
 
