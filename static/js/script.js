@@ -25,6 +25,9 @@ for(let i = 0; i < allGamesTable.length; i++) {
     let lastLoser = allGamesTable[i].querySelector('td:last-of-type span:last-of-type');
 
     if( lastLoser ) {
-        lastLoser.innerHTML.replace(', ', '');
+        html = lastLoser.innerHTML;
+        html = html.replace(", ", "");
+
+        lastLoser.innerHTML = html;
     }
 }
