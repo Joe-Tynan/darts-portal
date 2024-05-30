@@ -26,7 +26,8 @@ class LeagueTableView(ListView):
         context["championship_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[8:12]
         context["vanarama_players"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), last_win=Max('wins__date')).order_by('-num_wins', 'last_win').distinct()[12:16]
 
-        context["monthly_leaders"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__month=datetime.date.today().month).order_by('-num_wins', 'last_win').distinct()[:3]
+        context["monthly_leaders"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__month=datetime.date.today().month).order_by('num_wins', 'last_win').distinct()[:3]
+
         context["weekly_leaders"] = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__week=datetime.date.today().isocalendar()[1]).order_by('-num_wins', 'last_win').distinct()[:3]
 
         context["this_years_game_count"] = Win.objects.filter(date__contains=datetime.date.today().year).count()
