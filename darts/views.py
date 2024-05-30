@@ -33,6 +33,9 @@ class LeagueTableView(ListView):
         context["this_years_game_count"] = Win.objects.filter(date__contains=datetime.date.today().year).count()
 
         context["last_result"] = Win.objects.order_by('-date')[:1]
+
+        context["top_5_form"] = sorted( CustomUser.objects.all(), key=lambda u: u.get_form_score(), reverse=True )[:5]
+        context["top_5_win_ratio"] = sorted( CustomUser.objects.all(), key=lambda u: u.get_win_ratio(), reverse=True )[:5]
         
         # Return context
         return context

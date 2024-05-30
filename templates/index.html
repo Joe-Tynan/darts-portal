@@ -14,15 +14,38 @@
         <div class="pk-border">
             <h3>{{ last_result.0.date|date:"l j F" }}</h3>
             <div class="flex-wrapper">
-                <p>Winner: <span>{{ last_result.0.winner.first_name }} {{ last_result.0.winner.last_name }}</span><br>Runner Up: <span>{{ last_result.0.runner_up.first_name }} {{ last_result.0.runner_up.last_name }}</span></p>
+                <div class="global-stats-container">
+                    <p>Winner: <span>{{ last_result.0.winner.first_name }} {{ last_result.0.winner.last_name }}</span></p>
+                    <p>Runner Up: <span>{{ last_result.0.runner_up.first_name }} {{ last_result.0.runner_up.last_name }}</span></p>
+                </div>
             </div>
         </div>
-        <div class="pk-border"></div>
-        <div class="pk-border"></div>
+        <div class="pk-border">
+            <h3>Current Form</h3>
+            <div class="flex-wrapper">
+                <div class="global-stats-container">
+                    {% for player in top_5_form %}
+                        <p>{{ player.first_name }} {{ player.last_name }}: <span>{{ player.get_form_score|floatformat:1 }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="pk-border">
+            <h3>Win Ratio</h3>
+            <div class="flex-wrapper">
+                <div class="global-stats-container">
+                    {% for player in top_5_win_ratio %}
+                        <p>{{ player.first_name }} {{ player.last_name }}: <span>{{ player.get_win_ratio }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
         <div class="pk-border">
             <h3>This Year at a Glance</h3>
             <div class="flex-wrapper">
-                <p>Total Games: <span class="block">{{ this_years_game_count }}</span></p>
+                <div class="global-stats-container">
+                    <p>Total Games: <span class="block">{{ this_years_game_count }}</span></p>
+                </div>
             </div>
         </div>
     </div>

@@ -365,7 +365,7 @@ form .button {
     justify-content: center;
 }
 
-.killer-stats .flex-wrapper p {
+.killer-stats .flex-wrapper .global-stats-container {
     background-color: #ffffff;
     padding: 18px;
     text-align: center;
@@ -373,6 +373,14 @@ form .button {
     border-radius: 2px;
     margin: 0;
     font-weight: 500;
+    width: 200px;
+}
+
+.killer-stats .flex-wrapper .global-stats-container p {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .killer-stats .flex-wrapper p span {
