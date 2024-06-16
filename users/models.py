@@ -12,6 +12,9 @@ class CustomUser(AbstractUser):
     plays_darts = models.BooleanField(default=True)
     does_karting = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ['first_name', 'last_name']
+
     # General Functions
     def __str__(self):
         return self.first_name + ' ' + self.last_name
