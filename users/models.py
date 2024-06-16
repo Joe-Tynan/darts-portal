@@ -12,6 +12,10 @@ class CustomUser(AbstractUser):
     plays_darts = models.BooleanField(default=True)
     does_karting = models.BooleanField(default=True)
 
+    # General Functions
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
+
     # Yearly Functions
     def get_this_years_wins(self):
         return self.wins.all().filter(date__contains=datetime.date.today().year).count()
