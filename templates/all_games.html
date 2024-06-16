@@ -20,7 +20,7 @@
                     <th>
                         <h3>Runner Up</h3>
                     </th>
-                    <th>
+                    <th class="align-left">
                         <h3>Losers</h3>
                     </th>
                 </tr>
@@ -28,7 +28,7 @@
             <tbody>
                 {% for game in all_games %}
                     <tr>
-                        <td class="narrow align-left"><p>{{ game.date|date:"D d M" }}</p></td>
+                        <td class="narrow"><p>{{ game.date|date:"D d M" }}</p></td>
                         <td class="narrow"><p>{{ game.winner.first_name }} {{ game.winner.last_name }}</p></td>
                         <td class="narrow"><p>{{ game.runner_up.first_name }} {{ game.runner_up.last_name }}</p></td>
                         <td class="align-left">
