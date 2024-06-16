@@ -373,7 +373,7 @@ form .button {
     border-radius: 2px;
     margin: 0;
     font-weight: 500;
-    width: 200px;
+    width: 100%;
 }
 
 .killer-stats .flex-wrapper .global-stats-container p {
