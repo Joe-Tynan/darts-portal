@@ -5,6 +5,7 @@
 {% block content %}
     <div class="title-section">
         <h1>Submit a Game</h1>
+        <p>Last game submitted on: {{ last_result.0.date|date:"l j F Y" }}</p>
     </div>
     <section class="win-form pk-border">
         <form method="post">

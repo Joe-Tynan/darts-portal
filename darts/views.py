@@ -45,6 +45,16 @@ class WinCreateView(CreateView):
     fields = ['winner', 'runner_up', 'participants']
     template_name = 'create_win.html'
     form = WinCreateForm
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        
+        # Add in custom QuerySets
+        context["last_result"] = Win.objects.order_by('-date')[:1]
+        
+        # Return context
+        return context
     
     def get_success_url(self):
         return reverse('darts:home')
