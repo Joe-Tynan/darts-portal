@@ -1,4 +1,0 @@
-serve: . 
-snapshots:
-  - name: Home
-    url: http://localhost:8000/

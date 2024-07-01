@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@percy/cli": "^1.27.7",
-    "gulp": "^4.0.2"
-  }
-}
