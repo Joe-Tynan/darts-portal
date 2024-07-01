@@ -1,0 +1,48 @@
+@use '../variables';
+
+.killer-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 24px;
+
+    .pk-border {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .flex-wrapper {
+        margin-top: 24px;
+        justify-content: center;
+
+        span {
+            color: variables.$blue;
+
+            &.block {
+                display: block;
+            }
+        }
+    }
+
+    .global-stats-container {
+        background-color: variables.$white;
+        padding: 18px;
+        text-align: center;
+        border: solid 1px variables.$blue;
+        border-radius: 2px;
+        margin: 0;
+        font-weight: 500;
+        width: 100%;
+
+        p {
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

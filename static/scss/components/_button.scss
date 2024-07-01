@@ -1,0 +1,75 @@
+@use '../variables';
+
+.buttons {
+    display: flex;
+    gap: 24px;
+}
+
+.button {
+    font-weight: 500;
+    color: variables.$white;
+    background-color: variables.$blue;
+    padding: 10px 30px;
+    border: 3px solid variables.$dark-blue;
+    text-transform: uppercase;
+    transition: all .3s ease;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: .15rem;
+    text-decoration: none;
+    position: relative;
+    display: block;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        top: auto;
+        left: 0;
+        left: auto;
+        background-color: variables.$dark-blue;
+        display: inline-block;
+        z-index: -1;
+        transition: all .3s ease;
+        width: 100%;
+        width: 3px;
+        height: 100%;
+        bottom: -6px;
+        right: 0;
+        transform: translateX(6px);
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        top: auto;
+        left: 0;
+        left: auto;
+        background-color: variables.$dark-blue;
+        display: inline-block;
+        z-index: -1;
+        transition: all .3s ease;
+        width: 100%;
+        height: 100%;
+        height: 3px;
+        bottom: 0;
+        right: -6px;
+        transform: translateY(6px);
+    }
+
+    &:hover {
+        transform: translate(3px,3px);
+        background-color: variables.$blue;
+
+        &:before {
+            transform: translateX(3px);
+            bottom: -3px;
+        }
+
+        &:after {
+            transform: translateY(3px);
+            right: -3px;
+        }
+    }
+}

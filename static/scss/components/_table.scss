@@ -1,0 +1,32 @@
+@use '../variables';
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+
+        th {
+            padding: 18px;
+        }
+    }
+
+    tbody {
+
+        td {
+            border: solid 1px variables.$blue;
+            padding: 0 18px;
+            text-align: center;
+            height: 75px;
+
+            p {
+                color: variables.$white;
+                line-height: 1.5;
+            }
+
+            &.narrow {
+                width: 15%;
+            }
+        }
+    }
+}

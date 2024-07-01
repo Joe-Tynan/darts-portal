@@ -1,0 +1,35 @@
+@use '../variables';
+
+.views {
+    margin-top: 24px;
+
+    .monthly-leaders, .weekly-leaders {
+        width: calc(50%);
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 24px;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: variables.$white;
+            padding: 10px;
+            border-radius: 2px;
+            margin-bottom: 8px;
+            border: 1px solid variables.$blue;
+
+            p {
+                font-weight: 500;
+                margin: 0;
+
+                span {
+                    color: variables.$blue;
+                }
+            }
+        }
+    }
+}

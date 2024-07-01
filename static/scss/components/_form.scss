@@ -1,0 +1,28 @@
+@use '../variables';
+
+form {
+    display: flex;
+    gap: 64px;
+
+    p {
+        margin: 0;
+        width: 20%;
+    }
+
+    label {
+        display: block;
+        color: variables.$white;
+        margin-bottom: 12px;
+        font-size: 20px;
+    }
+
+    select {
+        font-size: 18px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .button {
+        height: fit-content;
+    }
+}

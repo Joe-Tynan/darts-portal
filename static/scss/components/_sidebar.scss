@@ -1,0 +1,86 @@
+@use '../variables';
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: variables.$blue;
+    overflow-x: hidden;
+    padding-top: 65px;
+    transition: all 0.3s ease-in-out;
+
+    .button-close {
+        position: absolute;
+        top: 0;
+        right: 24px;
+        font-size: 36px;
+        color: variables.$white;
+        text-decoration: none;
+    }
+
+    .sidebar-wrapper {
+        padding: 24px;
+
+        .statisitics-wrapper {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 60px;
+
+            li {
+                padding: 10px;
+                background-color: variables.$white;
+                margin-bottom: 12px;
+                border-radius: 2px;
+
+                p {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .form-wrapper {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        margin-bottom: 42px;
+
+        li {
+
+            span {
+                height: 20px;
+                width: 20px;
+                background-color: red;
+                display: block;
+                border-radius: 50%;
+                border: solid 1px variables.$white;
+            }
+
+            &.win {
+
+                span {
+                    background-color: green;
+                }
+            }
+
+            &.runner-up {
+
+                span {
+                    background-color: orange;
+                }
+            }
+        }
+    }
+
+    &.active {
+        width: 400px;
+    }
+}

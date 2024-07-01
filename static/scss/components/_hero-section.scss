@@ -1,0 +1,41 @@
+@use '../variables';
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    background-color: variables.$blue;
+    margin-bottom: 60px;
+
+    img {
+        display: block;
+        height: 250px;
+        width: 250px;
+        border-radius: 50%;
+    }
+
+    .primary-container {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+
+        .flex-between {
+            width: 100%;
+
+            h1 {
+                font-weight: 500;
+            }
+
+            .win-count {
+                font-size: 80px;
+                font-weight: 700;
+                color: variables.$white;
+            }
+
+            .nickname {
+                font-size: 80px;
+                font-weight: 700;
+            }
+        }
+    }
+}

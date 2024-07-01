@@ -1,0 +1,50 @@
+@use 'variables';
+
+.mt-36 {
+    margin-top: 36px;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.pk-border {
+    border: 1px solid variables.$blue;
+    padding: 30px;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.svg-wrapper {
+    text-align: center;
+}
+
+.svg-wrapper svg {
+    max-width: 500px;
+    height: fit-content;
+}
+
+.white-text {
+    color: variables.$white;
+}
+
+.win-count {
+    color: variables.$blue;
+    font-weight: 500 !important;
+    font-size: 17px;
+    margin-left: 12px;
+}
+
+.game-info {
+    font-weight: 400 !important;
+}

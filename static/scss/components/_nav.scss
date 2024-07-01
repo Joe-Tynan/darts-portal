@@ -1,0 +1,38 @@
+@use '../variables';
+
+.nav {
+    margin-bottom: 60px;
+
+    .logo {
+        display: flex;
+    }
+
+    img {
+        object-fit: contain;
+        width: 200px;
+    }
+
+    .flex-wrapper {
+        gap: 0;
+
+        .menu {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            li {
+
+                a {
+                    color: variables.$white;
+                    text-decoration: none;
+                    transition: 0.3s all ease-in-out;
+
+                    &:hover {
+                        color: variables.$blue;
+                    }
+                }
+            }
+        }
+    }
+}
