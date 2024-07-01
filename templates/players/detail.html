@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+
+{% block title %}Darts Portal | {{ player }}{% endblock title %}
+
+{% block hero %}
+    <section class="hero-section">
+        <div class="primary-container">
+            {% if player.headshot %}
+                <img src="{{ player.headshot.url }}" alt="{{ player }} Headshot">
+            {% endif %}
+            <div class="flex-between">
+                <h1>{{ player.first_name }}<br><span class="nickname">{{ player.nickname }}</span><br>{{ player.last_name }}</h1>
+                <p class="win-count">{{ player.get_this_years_wins }}</p>
+            </div>
+        </div>
+    </section>
+{% endblock hero %}
+
+{% block content %}
+    <section class="win-form pk-border">
+        [ Content ]
+    </section>
+{% endblock content %}

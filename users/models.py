@@ -3,6 +3,8 @@ from datetime import timedelta
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 from darts.models import Win
 from karting.models import LapTime
@@ -11,6 +13,8 @@ class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=200, blank=True)
     plays_darts = models.BooleanField(default=True)
     does_karting = models.BooleanField(default=True)
+    slug = models.SlugField(null=False, unique=True)
+    headshot = models.ImageField(upload_to='headshots/', blank=True)
 
     class Meta:
         ordering = ['first_name', 'last_name']
@@ -18,6 +22,14 @@ class CustomUser(AbstractUser):
     # General Functions
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+    
+    def get_absolute_url(self):
+        return reverse("player_detail", kwargs={"slug": self.slug})
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.first_name + ' ' + self.last_name)
+        return super().save(*args, **kwargs)
 
     # Yearly Functions
     def get_this_years_wins(self):
