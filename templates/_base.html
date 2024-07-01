@@ -23,12 +23,14 @@
                 </div>
             </div>
         </div>
+        {% block hero %}{% endblock hero %}
         <div class="primary-container">
             <div id="main">
                 {% block content %}{% endblock content %}
             </div>
 
             <script src="{% static 'js/script.js' %}"></script>
+            {% block scripts %}{% endblock scripts %}
         </div>
     </body>
 </html>

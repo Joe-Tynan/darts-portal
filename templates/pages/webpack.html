@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Darts Portal | Webpack Test {% endblock title %}
+
+{% block content %}
+    <div id="app">${ message }</div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp } = Vue
+      
+        createApp({
+          data() {
+            return {
+              message: 'Hello Vue!'
+            }
+          },
+          delimiters: ['${', '}']
+        }).mount('#app')
+      </script>
+{% endblock scripts %}
