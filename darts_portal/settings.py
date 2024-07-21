@@ -192,3 +192,6 @@ INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
 
 if ENVIRONMENT == 'development':
     SHOW_TOOLBAR_CALLBACK = True
+    DEBUG_TOOLBAR_CONFIG = {
+        'IS_RUNNING_TESTS': False,
+    }

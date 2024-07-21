@@ -19,6 +19,12 @@ class CustomUser(AbstractUser):
     class Meta:
         ordering = ['first_name', 'last_name']
 
+    # Admin Functions
+    def display_user_wins(self):
+        return self.wins.count()
+    
+    display_user_wins.short_description = 'Wins'
+
     # General Functions
     def __str__(self):
         return self.first_name + ' ' + self.last_name
