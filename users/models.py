@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=200, blank=True)
     plays_darts = models.BooleanField(default=True)
     does_karting = models.BooleanField(default=True)
-    slug = models.SlugField(null=True, unique=True)
+    slug = models.SlugField(null=True, blank=True, unique=True)
     #headshot = models.ImageField(upload_to='headshots/', blank=True)
 
     class Meta:
@@ -29,8 +29,8 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
     
-    def get_absolute_url(self):
-        return reverse("player_detail", kwargs={"slug": self.slug})
+    #def get_absolute_url(self):
+        #return reverse("player_detail", kwargs={"slug": self.slug})
     
     def save(self, *args, **kwargs):
         if not self.slug:
