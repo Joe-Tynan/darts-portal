@@ -14,7 +14,7 @@ class CustomUser(AbstractUser):
     plays_darts = models.BooleanField(default=True)
     does_karting = models.BooleanField(default=True)
     slug = models.SlugField(null=True, unique=True)
-    headshot = models.ImageField(upload_to='headshots/', blank=True)
+    #headshot = models.ImageField(upload_to='headshots/', blank=True)
 
     class Meta:
         ordering = ['first_name', 'last_name']
