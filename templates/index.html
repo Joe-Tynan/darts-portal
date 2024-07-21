@@ -119,6 +119,10 @@
                 </ul>
                 <div class="form">
                     <h4>Current Form: {{ player.get_form_score|floatformat:1 }}</h4>
+                    <div class="form-labels flex-wrapper">
+                        <p class="white-text m-0">Oldest</p>
+                        <p class="white-text m-0">Most Recent</p>
+                    </div>
                     <ul class="form-wrapper">
                         {% for key, value in player.get_form.items %}
                         <li class="{{ value }}"><span></span></li>
@@ -163,7 +167,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="sessions-wrapper">
         <p class="white-text">You have visited the Darts Portal {{ request.session.visit_count }} time{{ request.session.visit_count|pluralize }}</p>
     </div>
 {% endblock content %}

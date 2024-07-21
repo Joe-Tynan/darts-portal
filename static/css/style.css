@@ -3,6 +3,10 @@
   margin-top: 36px;
 }
 
+.m-0 {
+  margin: 0;
+}
+
 .align-left {
   text-align: left;
 }
@@ -243,7 +247,8 @@ form .button {
 }
 
 .sidebar {
-  height: 100%;
+  top: 0;
+  bottom: 0;
   width: 0;
   position: fixed;
   z-index: 1;
@@ -251,7 +256,8 @@ form .button {
   right: 0;
   background-color: #005aff;
   overflow-x: hidden;
-  padding-top: 65px;
+  overflow-y: scroll;
+  padding: 65px 0;
   transition: all 0.3s ease-in-out;
 }
 .sidebar .button-close {
@@ -282,13 +288,18 @@ form .button {
   align-items: center;
   margin: 0;
 }
+.sidebar .form-labels {
+  margin-top: 10px;
+}
+.sidebar .form-labels p {
+  font-size: 12px;
+}
 .sidebar .form-wrapper {
   list-style-type: none;
   padding: 0;
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
-  margin-bottom: 42px;
 }
 .sidebar .form-wrapper li span {
   height: 20px;
@@ -356,6 +367,10 @@ table tbody td.narrow {
 }
 .views ul li p span {
   color: #005aff;
+}
+
+.sessions-wrapper {
+  margin-top: 48px;
 }
 
 body {

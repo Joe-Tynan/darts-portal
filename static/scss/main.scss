@@ -9,6 +9,7 @@
 @use 'components/sidebar';
 @use 'components/table';
 @use 'components/views';
+@use 'components/sessions';
 
 body {
     background-color: variables.$dark-blue;

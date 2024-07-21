@@ -1,7 +1,8 @@
 @use '../variables';
 
 .sidebar {
-    height: 100%;
+    top: 0;
+    bottom: 0;
     width: 0;
     position: fixed;
     z-index: 1;
@@ -9,7 +10,8 @@
     right: 0;
     background-color: variables.$blue;
     overflow-x: hidden;
-    padding-top: 65px;
+    overflow-y: scroll;
+    padding: 65px 0;
     transition: all 0.3s ease-in-out;
 
     .button-close {
@@ -45,13 +47,20 @@
         }
     }
 
+    .form-labels {
+        margin-top: 10px;
+
+        p {
+            font-size: 12px;
+        }
+    }
+
     .form-wrapper {
         list-style-type: none;
         padding: 0;
         display: flex;
         justify-content: space-between;
         flex-direction: row-reverse;
-        margin-bottom: 42px;
 
         li {
 
