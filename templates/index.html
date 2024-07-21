@@ -35,7 +35,7 @@
             <div class="flex-wrapper">
                 <div class="global-stats-container">
                     {% for player in top_5_win_ratio %}
-                        <p>{{ player.first_name }} {{ player.last_name }}: <span>{{ player.get_win_ratio }}</span></p>
+                        <p>{{ player.first_name }} {{ player.last_name }}: <span>{{ player.get_win_ratio }}%</span></p>
                     {% endfor %}
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     <li class="mt-36"><p>Last Played: <span>{{ player.get_last_game_played }}</span></p></li>
                     <li><p>Last Win: <span>{{ player.get_last_win }}</span></p></li>
                     <li><p>Predicted Wins: <span>{{ player.get_predicted_wins }}</span></p></li>
-                    <li><p>Win Ratio: <span>{{ player.get_win_ratio }}</span></p></li>
+                    <li><p>Win Ratio: <span>{{ player.get_win_ratio }}%</span></p></li>
                     
                     <li class="mt-36"><p>All-time Wins: <span>{{ player.get_total_points }}</span></p></li>
                     <li><p>All-time Games Played: <span>{{ player.games_played.count }}</span></p></li>
