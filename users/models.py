@@ -32,10 +32,10 @@ class CustomUser(AbstractUser):
     #def get_absolute_url(self):
         #return reverse("player_detail", kwargs={"slug": self.slug})
     
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.first_name + ' ' + self.last_name)
-        return super().save(*args, **kwargs)
+    #def save(self, *args, **kwargs):
+        #if not self.slug:
+            #self.slug = slugify(self.first_name + ' ' + self.last_name)
+        #return super().save(*args, **kwargs)
 
     # Yearly Functions
     def get_this_years_wins(self):
