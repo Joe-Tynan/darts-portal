@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=200, blank=True)
     plays_darts = models.BooleanField(default=True)
     does_karting = models.BooleanField(default=True)
-    slug = models.SlugField(null=True, blank=True, unique=True)
+    #slug = models.SlugField(null=True, blank=True, unique=True)
     #headshot = models.ImageField(upload_to='headshots/', blank=True)
 
     class Meta:
