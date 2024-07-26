@@ -9,4 +9,4 @@ release:
   command:
   - python manage.py collectstatic --noinput
 run:
-  web: gunicorn darts_portal.wsgi
+  web: gunicorn config.wsgi

@@ -1,0 +1,148 @@
+{% extends '_new_base.html' %}
+
+{% block heading %}
+    <div class="flex-wrapper align-center">
+        <h1>Leaderboard</h1>
+        <p class="white-text m-0">You have visited the Darts Portal {{ visit_count }} time{{ visit_count|pluralize }}</p>
+    </div>
+{% endblock heading %}
+
+{% block stats %}
+    <section class="stats-section">
+        <div class="primary-container">
+            <div class="flex-wrapper align-stretch">
+                <div class="stats-container full-width">
+                    <div class="span">
+                        <h3>{{ last_result.0.date|date:"l j F" }}</h3>
+                        <div class="flex-wrapper">
+                            <div class="global-stats-container">
+                                <p>Winner: <span>{{ last_result.0.winner.first_name }} {{ last_result.0.winner.last_name }}</span></p>
+                                <p>Runner Up: <span>{{ last_result.0.runner_up.first_name }} {{ last_result.0.runner_up.last_name }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-container full-width">
+                    <div class="span">
+                        <h3>Current Form</h3>
+                        <div class="flex-wrapper">
+                            <div class="global-stats-container">
+                                {% for player in top_5_form %}
+                                    <p>{{ player.first_name }} {{ player.last_name }}: <span>{{ player.get_form_score|floatformat:1 }}</span></p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-container full-width">
+                    <div class="span">
+                        <h3>Win Ratio</h3>
+                        <div class="flex-wrapper">
+                            <div class="global-stats-container">
+                                {% for player in top_5_win_ratio %}
+                                    <p>{{ player.first_name }} {{ player.last_name }}: <span>{{ player.get_win_ratio }}%</span></p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-container full-width">
+                    <div class="span">
+                        <h3>This Year at a Glance</h3>
+                        <div class="flex-wrapper">
+                            <div class="global-stats-container">
+                                <p class="white-text">Total Games: <span class="block">{{ this_years_game_count }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="primary-container">
+            <div class="stats-container">
+                <div class="flex-wrapper">
+                    <div class="league">
+                        <h2>Champions League</h2>
+                        <ul class="m-0">
+                            {% for player in players|slice:":4" %}
+                                <li class="player-card">
+                                    <p>{{ player.get_form_emoji }} {{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                                    <p class="game-info">(P{{ player.get_this_years_games_played }} RU{{ player.get_this_years_runner_ups }}) <span class="win-count">{{ player.get_this_years_wins }}</span></p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="league">
+                        <h2>Premier League</h2>
+                        <ul class="m-0">
+                            {% for player in players|slice:"4:8" %}
+                                <li class="player-card">
+                                    <p>{{ player.get_form_emoji }} {{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                                    <p class="game-info">(P{{ player.get_this_years_games_played }} RU{{ player.get_this_years_runner_ups }}) <span class="win-count">{{ player.get_this_years_wins }}</span></p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="league">
+                        <h2>Championship</h2>
+                        <ul class="m-0">
+                            {% for player in players|slice:"8:12" %}
+                                <li class="player-card">
+                                    <p>{{ player.get_form_emoji }} {{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                                    <p class="game-info">(P{{ player.get_this_years_games_played }} RU{{ player.get_this_years_runner_ups }}) <span class="win-count">{{ player.get_this_years_wins }}</span></p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="league">
+                        <h2>Vanarama</h2>
+                        <ul class="m-0">
+                            {% for player in players|slice:"12:16" %}
+                                <li class="player-card">
+                                    <p>{{ player.get_form_emoji }} {{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
+                                    <p class="game-info">(P{{ player.get_this_years_games_played }} RU{{ player.get_this_years_runner_ups }}) <span class="win-count">{{ player.get_this_years_wins }}</span></p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="primary-container">
+            <div class="flex-wrapper align-stretch">
+                <div class="stats-container full-width">
+                    <div class="span">
+                        <h3>Monthly Top 3</h3>
+                        <ul>
+                            {% for player in monthly_leaders %}
+                                <li class="player-card">
+                                    <p>{{ player.first_name }} {{ player.last_name }}</p>
+                                    <p class="game-info"><span class="win-count">{{ player.get_this_months_wins }}</span></p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="stats-container full-width">
+                    <div class="span">
+                        <h3>Weekly Top 3</h3>
+                        <ul>
+                            {% for player in weekly_leaders %}
+                                <li class="player-card">
+                                    <p>{{ player.first_name }} {{ player.last_name }}</p>
+                                    <p class="game-info"><span class="win-count">{{ player.get_this_weeks_wins }}</span></p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock stats %}

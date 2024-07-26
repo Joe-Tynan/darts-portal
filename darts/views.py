@@ -1,5 +1,6 @@
 import datetime
 
+from django.template.response import TemplateResponse
 from django.views.generic import ListView, CreateView
 from django.db.models import Count, Max
 from django.urls import reverse
@@ -8,6 +9,41 @@ from users.models import CustomUser
 from .models import Win, Bet
 from .forms import WinCreateForm
 
+# New Views
+def dashboard(request):
+    # Set Up Sessions Framework & Increment for every request
+    visit_count = request.session.get('visit_count', 0)
+    request.session['visit_count'] = visit_count + 1
+
+    # Set up Leaderboard & Retrieve Players
+    players = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), num_runner_ups=Count('runner_ups', distinct=True), last_win=Max('wins__date'), last_runner_up=Max('runner_ups__date'), num_games_played=Count('games_played', distinct=True)).order_by('-num_wins', 'last_win', '-num_runner_ups', 'last_runner_up', '-num_games_played', 'first_name', 'last_name').distinct()
+
+    # Retrieve Other Stats
+    monthly_leaders = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__month=datetime.date.today().month).order_by('-num_wins', 'last_win').distinct()[:3]
+    weekly_leaders = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__week=datetime.date.today().isocalendar()[1]).order_by('-num_wins', 'last_win').distinct()[:3]
+
+    this_years_game_count = Win.objects.filter(date__contains=datetime.date.today().year).count()
+
+    last_result = Win.objects.order_by('-date')[:1]
+
+    top_5_form= sorted( CustomUser.objects.exclude(plays_darts=False), key=lambda u: u.get_form_score(), reverse=True )[:5]
+    top_5_win_ratio = sorted( CustomUser.objects.exclude(plays_darts=False), key=lambda u: u.get_win_ratio(), reverse=True )[:5]
+
+    # Set up Context
+    context = {
+        'visit_count': visit_count,
+        'players': players,
+        'monthly_leaders': monthly_leaders,
+        'weekly_leaders': weekly_leaders,
+        'this_years_game_count': this_years_game_count,
+        'last_result': last_result,
+        'top_5_form': top_5_form,
+        'top_5_win_ratio': top_5_win_ratio,
+    }
+    
+    return TemplateResponse(request, 'dashboard.html', context)
+
+# Old Views
 class LeagueTableView(ListView):
     model = CustomUser
     template_name = 'index.html'

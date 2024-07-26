@@ -8,8 +8,29 @@
     margin: 0;
 }
 
+.p-0 {
+    padding: 0;
+}
+
+
 .align-left {
     text-align: left;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-stretch {
+    align-items: stretch;
+}
+
+.span {
+    width: 100%;
 }
 
 .pk-border {
@@ -51,4 +72,19 @@
 
 .game-info {
     font-weight: 400 !important;
+}
+
+.desktop {
+    display: none !important;
+
+    @media #{variables.$tablet} {
+        display: flex !important;
+    }
+}
+
+.mobile {
+
+    @media #{variables.$tablet} {
+        display: none !important;
+    }
 }

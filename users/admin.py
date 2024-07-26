@@ -11,8 +11,8 @@ class CustomUserAdmin(UserAdmin):
     list_display = ['first_name', 'last_name', 'nickname', 'display_user_wins']
     list_filter = ('plays_darts',)
 
-    fieldsets = UserAdmin.fieldsets + (('Darts Information', {"fields": ["nickname", "plays_darts", "does_karting"]}),)
-    add_fieldsets = UserAdmin.add_fieldsets + (('Darts Information', {"fields": ["nickname", "plays_darts", "does_karting"]}),)
+    fieldsets = UserAdmin.fieldsets + (('Darts Information', {"fields": ["nickname", "plays_darts"]}),)
+    add_fieldsets = UserAdmin.add_fieldsets + (('Darts Information', {"fields": ["nickname", "plays_darts"]}),)
 
     # Doesn't Work on Custom User for Some Reason?
     # fields = [('first_name', 'nickname', 'last_name')]

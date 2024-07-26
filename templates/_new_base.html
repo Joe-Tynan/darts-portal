@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{% static 'images/favicon.png' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <title>{% block title %}Darts Portal{% endblock title %}</title>
+    </head>
+    <body class="p-0 bg-transparent">
+        <header>
+            <div class="primary-container">
+                <nav class="flex-wrapper">
+                    <div class="menu-container">
+                        <a href="{% url 'darts:home' %}" class="logo" title="Home">
+                            <img src="{% static 'images/favicon.png' %}" alt="Pixel Kicks">
+                        </a>
+                        <ul class="menu m-0 p-0">
+                            <li><a href="{% url 'darts:home' %}" title="Leaderboard">Killer Leaderboard</a></li>
+                            <li><a href="{% url 'darts:all_games' %}" title="Leaderboard">All Results</a></li>
+                            <li><a href="{% url 'darts:bets' %}" title="Leaderboard">Bets</a></li>
+                        </ul>
+                    </div>
+                    <div class="actions-container">
+                        <a href="{% url 'darts:submit_win' %}" class="button desktop" title="Submit Win">Submit a Game</a>
+                        <a href="#" class="button mobile" title="Mobile Menu">Menu</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <section class="title-section-new">
+                <div class="primary-container">
+                    {% block heading %}{% endblock heading %}
+                </div>
+            </section>
+            {% block stats %}{% endblock stats %}
+        </main>
+        <footer></footer>
+    </body>
+</html>

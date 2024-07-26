@@ -1,7 +1,9 @@
-// sass --watch static/scss/main.scss:statc/css/style.css
+// sass --watch static/scss/main.scss:static/css/style.css
 
 @use 'variables';
 @use 'utilities';
+
+@use 'layouts/header';
 
 @use 'components/button';
 @use 'components/form';
@@ -45,7 +47,6 @@ h1, h2, h3, h4, h5, h6 {
 .flex-wrapper {
 
     .league {
-        width: calc(100% / 4);
 
         ul {
             list-style-type: none;
@@ -69,6 +70,10 @@ h1, h2, h3, h4, h5, h6 {
                     span {
                         color: #005aff;
                     }
+                }
+
+                &:last-of-type {
+                    margin-bottom: 0;
                 }
 
                 &:hover {

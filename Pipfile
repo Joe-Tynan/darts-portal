@@ -13,6 +13,8 @@ dj-database-url = "*"
 django-lockdown = "*"
 django-debug-toolbar = "*"
 pillow = "*"
+coverage = "*"
+djangorestframework = "*"
 
 [dev-packages]
 
