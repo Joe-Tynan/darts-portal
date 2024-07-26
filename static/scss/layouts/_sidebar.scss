@@ -90,6 +90,10 @@
     }
 
     &.active {
-        width: 400px;
+        width: 100%;
+
+        @media #{variables.$tablet} {
+            width: 400px;
+        }
     }
 }

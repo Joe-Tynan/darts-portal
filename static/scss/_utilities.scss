@@ -2,7 +2,10 @@
 
 // Margin / Padding
 .m-0 {
-    margin: 0;
+
+    @media #{variables.$tablet} {
+        margin: 0;
+    }
 }
 
 .p-0 {
@@ -30,12 +33,21 @@
 // Flex
 .flex-wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 24px;
+
+    @media #{variables.$tablet} {
+        flex-wrap: nowrap;
+        gap: 24px;
+    }
 }
 
 .align-stretch {
     align-items: stretch;
+}
+
+.align-center {
+    align-items: center;
 }
 
 // Show / Hide
