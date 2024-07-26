@@ -76,7 +76,7 @@ class CustomUser(AbstractUser):
         if( self.games_played.count() > 0  ):
             return round(((self.wins.count() / self.games_played.count()) * 100), 1)
         else:
-            return 'Not Played Yet'
+            return 0
 
     def get_last_win(self):
         today = datetime.date.today()
