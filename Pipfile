@@ -15,6 +15,7 @@ django-debug-toolbar = "*"
 pillow = "*"
 coverage = "*"
 djangorestframework = "*"
+django-csp = "*"
 
 [dev-packages]
 
