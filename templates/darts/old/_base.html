@@ -6,20 +6,20 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="{% static 'images/favicon.png' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/old/style.css' %}">
         <title>{% block title %}Darts Portal{% endblock title %}</title>
     </head>
     <body>
         <div class="nav">
             <div class="primary-container">
                 <div class="flex-wrapper">
-                    <a href="{% url 'darts:home' %}" class="logo" title="Home">
+                    <a href="{% url 'darts:dashboard' %}" class="logo" title="Home">
                         <img src="{% static 'images/logo.png' %}" alt="Pixel Kicks">
                     </a>
                     <ul class="menu">
-                        <li><a href="{% url 'darts:home' %}" title="Leaderboard">Killer Leaderboard</a></li>
-                        <li><a href="{% url 'darts:all_games' %}" title="Leaderboard">All Results</a></li>
-                        <li><a href="{% url 'darts:bets' %}" title="Leaderboard">Bets</a></li>
+                        <li><a href="{% url 'darts:dashboard_old' %}" title="Leaderboard">Killer Leaderboard</a></li>
+                        <li><a href="{% url 'darts:all_games_old' %}" title="Leaderboard">All Results</a></li>
+                        <li><a href="{% url 'darts:bets_old' %}" title="Leaderboard">Bets</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,11 @@
+@use '../variables';
+
+.title-section {
+    background-color: variables.$dark-blue;
+    padding: 48px 0 128px 0;
+
+    h1 {
+        font-size: 32px;
+        font-weight: 700;
+    }
+}

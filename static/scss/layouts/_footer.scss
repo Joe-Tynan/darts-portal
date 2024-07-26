@@ -1,0 +1,6 @@
+@use '../variables';
+
+footer {
+    background-color: variables.$dark-blue;
+    padding: 48px 0 128px 0;
+}

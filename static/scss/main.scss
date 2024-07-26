@@ -4,17 +4,15 @@
 @use 'utilities';
 
 @use 'layouts/header';
+@use 'layouts/sidebar';
+@use 'layouts/footer';
+
+@use 'components/title-section';
+@use 'components/stats-section';
 
 @use 'components/button';
-@use 'components/form';
-@use 'components/hero-section';
-@use 'components/killer-stats';
-@use 'components/nav';
-@use 'components/sidebar';
-@use 'components/table';
-@use 'components/views';
-@use 'components/sessions';
 
+// Main Styles Used Globally
 body {
     background-color: variables.$dark-blue;
     font-family: variables.$font;
@@ -33,68 +31,13 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
-.title-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 60px;
+section {
 
-    p {
-        color: variables.$white;
+    &:nth-of-type(2) {
+        margin-top: -80px;
     }
-}
 
-.flex-wrapper {
-
-    .league {
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin-top: 24px;
-
-            li {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background-color: #ffffff;
-                padding: 10px;
-                border-radius: 2px;
-                margin-bottom: 8px;
-                border: 1px solid #005aff;
-
-                p {
-                    font-weight: 500;
-                    margin: 0;
-
-                    span {
-                        color: #005aff;
-                    }
-                }
-
-                &:last-of-type {
-                    margin-bottom: 0;
-                }
-
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
+    &:last-of-type {
+        margin-bottom: -80px;
     }
-}
-
-.all-games {
-    list-style-type: none;
-
-    ul {
-
-        li {
-            color: variables.$white;
-        }
-    }
-}
-
-#id_participants {
-    height: 380px;
 }

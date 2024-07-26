@@ -14,30 +14,36 @@
             <div class="primary-container">
                 <nav class="flex-wrapper">
                     <div class="menu-container">
-                        <a href="{% url 'darts:home' %}" class="logo" title="Home">
+                        <a href="{% url 'darts:dashboard' %}" class="logo" title="Home">
                             <img src="{% static 'images/favicon.png' %}" alt="Pixel Kicks">
                         </a>
                         <ul class="menu m-0 p-0">
-                            <li><a href="{% url 'darts:home' %}" title="Leaderboard">Killer Leaderboard</a></li>
-                            <li><a href="{% url 'darts:all_games' %}" title="Leaderboard">All Results</a></li>
-                            <li><a href="{% url 'darts:bets' %}" title="Leaderboard">Bets</a></li>
+                            <li><a href="{% url 'darts:dashboard' %}" title="Leaderboard">Killer Leaderboard</a></li>
+                            <li><a href="{% url 'darts:all_games_old' %}" title="Leaderboard">All Results</a></li>
+                            <li><a href="{% url 'darts:bets_old' %}" title="Leaderboard">Bets</a></li>
                         </ul>
                     </div>
                     <div class="actions-container">
-                        <a href="{% url 'darts:submit_win' %}" class="button desktop" title="Submit Win">Submit a Game</a>
+                        <a href="{% url 'darts:submit_win_old' %}" class="button desktop" title="Submit Win">Submit a Game</a>
                         <a href="#" class="button mobile" title="Mobile Menu">Menu</a>
                     </div>
                 </nav>
             </div>
         </header>
         <main>
-            <section class="title-section-new">
+            <section class="title-section">
                 <div class="primary-container">
                     {% block heading %}{% endblock heading %}
                 </div>
             </section>
             {% block stats %}{% endblock stats %}
         </main>
+        <aside>
+            {% block sidebar %}{% endblock sidebar %}
+        </aside>
         <footer></footer>
     </body>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block scripts %}{% endblock scripts %}
 </html>

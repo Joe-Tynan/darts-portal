@@ -1,0 +1,83 @@
+@use '../variables';
+
+.stats-section {
+
+    .league {
+        flex: 1;
+    
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    .global-stats-container {
+        background-color: #ffffff;
+        padding: 18px;
+        text-align: center;
+        border: solid 1px #005aff;
+        border-radius: 2px;
+        margin: 0;
+        font-weight: 500;
+        width: 100%;
+        margin-top: 24px;
+
+        p {
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .primary-container {
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: variables.$blue;
+            border-radius: 8px;
+            margin-top: 24px;
+            padding: 48px;
+
+            .flex-wrapper {
+                width: 100%;
+                justify-content: stretch;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin-top: 24px;
+        
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background-color: variables.$white;
+                    padding: 10px;
+                    border-radius: 2px;
+                    margin-bottom: 8px;
+                    border: 1px solid variables.$blue;
+        
+                    p {
+                        font-weight: 500;
+                        margin: 0;
+        
+                        span {
+                            color: variables.$blue;
+                        }
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &.full-width {
+                flex: 1;
+            }
+        }
+    }
+}

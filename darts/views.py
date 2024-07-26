@@ -41,12 +41,12 @@ def dashboard(request):
         'top_5_win_ratio': top_5_win_ratio,
     }
     
-    return TemplateResponse(request, 'dashboard.html', context)
+    return TemplateResponse(request, 'darts/dashboard.html', context)
 
 # Old Views
 class LeagueTableView(ListView):
     model = CustomUser
-    template_name = 'index.html'
+    template_name = 'darts/old/dashboard.html'
     context_object_name = 'players'
     
     def get_queryset(self):
@@ -87,7 +87,7 @@ class LeagueTableView(ListView):
 class WinCreateView(CreateView):
     model = Win
     fields = ['winner', 'runner_up', 'participants']
-    template_name = 'create_win.html'
+    template_name = 'darts/old/create_win.html'
     form = WinCreateForm
 
     def get_context_data(self, **kwargs):
@@ -101,15 +101,15 @@ class WinCreateView(CreateView):
         return context
     
     def get_success_url(self):
-        return reverse('darts:home')
+        return reverse('darts:dashboard')
     
 class AllGamesView(ListView):
     model = Win
     ordering = ['-date']
-    template_name = 'all_games.html'
+    template_name = 'darts/old/all_games.html'
     context_object_name = 'all_games'
 
 class AllBetsView(ListView):
     model = Bet
-    template_name = 'all_bets.html'
+    template_name = 'darts/old/all_bets.html'
     context_object_name = 'all_bets'
