@@ -1,23 +1,44 @@
-{% extends '_base.html' %}
+{% extends '../_base.html' %}
 
 {% block title %}Darts Portal | {{ player }}{% endblock title %}
 
-{% block hero %}
-    <section class="hero-section">
+{% block heading %}
+    <div class="flex-wrapper align-center">
+        <h1>{{ player.first_name }}<br><span class="nickname">{{ player.nickname }}</span><br>{{ player.last_name }}</h1>
+        <p class="white-text m-0">{{ player.get_this_years_wins }} Wins</p>
+    </div>
+{% endblock heading %}
+
+{% block main %}
+    {% if player.headshot %}
+        <img src="{{ player.headshot.url }}" alt="{{ player }} Headshot">
+    {% endif %}
+
+    <section class="stats-section">
         <div class="primary-container">
-            {% if player.headshot %}
-                <img src="{{ player.headshot.url }}" alt="{{ player }} Headshot">
-            {% endif %}
-            <div class="flex-between">
-                <h1>{{ player.first_name }}<br><span class="nickname">{{ player.nickname }}</span><br>{{ player.last_name }}</h1>
-                <p class="win-count">{{ player.get_this_years_wins }}</p>
+            <div class="stats-container">
+                <canvas id="myChart"></canvas>
             </div>
         </div>
     </section>
-{% endblock hero %}
+{% endblock main %}
 
-{% block content %}
-    <section class="win-form pk-border">
-        [ Content ]
-    </section>
-{% endblock content %}
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script nonce='{{request.csp_nonce}}'>
+      const ctx = document.getElementById('myChart');
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+          }]
+        }
+      });
+    </script>
+{% endblock scripts %}

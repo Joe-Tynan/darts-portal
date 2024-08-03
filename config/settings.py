@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     # Third Party
     'debug_toolbar',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'csp.middleware.CSPMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -179,10 +181,18 @@ CSP_IMG_SRC = ("'self'")
 
 CSP_STYLE_SRC = ("'self'", 'https://fonts.googleapis.com')
 
-CSP_SCRIPT_SRC = ("'self'")
+CSP_SCRIPT_SRC = ("'self'", 'https://cdn.jsdelivr.net/npm/chart.js')
 
 CSP_FONT_SRC = ("'self'", 'https://fonts.gstatic.com/')
 
+CSP_INCLUDE_NONCE_IN = ['script-src']
+
+
+# CORS
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 # Heroku
 

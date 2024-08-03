@@ -10,12 +10,11 @@ whitenoise = "*"
 gunicorn = "*"
 django-environ = "*"
 dj-database-url = "*"
-django-lockdown = "*"
 django-debug-toolbar = "*"
-pillow = "*"
 coverage = "*"
 djangorestframework = "*"
 django-csp = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

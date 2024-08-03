@@ -16,6 +16,9 @@ class CustomUser(AbstractUser):
 
     class Meta:
         ordering = ['first_name', 'last_name']
+        indexes = [
+            models.Index(fields=['id'], name='user_id_index'),
+        ]
 
     # Admin Functions
     def display_user_wins(self):
@@ -27,13 +30,8 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
     
-    #def get_absolute_url(self):
-        #return reverse("player_detail", kwargs={"slug": self.slug})
-    
-    #def save(self, *args, **kwargs):
-        #if not self.slug:
-            #self.slug = slugify(self.first_name + ' ' + self.last_name)
-        #return super().save(*args, **kwargs)
+    def get_absolute_url(self):
+        return reverse("players:player_detail", args=[str(self.id)])
 
     # Yearly Functions
     def get_this_years_wins(self):

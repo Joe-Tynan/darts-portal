@@ -1,4 +1,4 @@
-{% extends 'darts/_base.html' %}
+{% extends '../_base.html' %}
 
 {% block heading %}
     <div class="flex-wrapper align-center">
@@ -7,7 +7,7 @@
     </div>
 {% endblock heading %}
 
-{% block stats %}
+{% block main %}
     <section class="stats-section">
         <div class="primary-container">
             <div class="flex-wrapper align-stretch">
@@ -145,14 +145,17 @@
             </div>
         </div>
     </section>
-{% endblock stats %}
+{% endblock main %}
 
 {% block sidebar %}
     {% for player in players %}
         <aside class="sidebar">
             <a href="#" class="button-close">&times;</a>
             <div class="sidebar-wrapper">
-                <h3>{{ player.first_name }} {{ player.last_name }}</h3>
+                <div class="flex-wrapper">
+                    <h3>{{ player.first_name }} {{ player.last_name }}</h3>
+                    <a class="button" href="{{ player.get_absolute_url }}">View More Stats</a>
+                </div>
                 <ul class="statisitics-wrapper">
                     <li><p>Wins: <span>{{ player.get_this_years_wins }}</span></p></li>
                     <li><p>Runner Ups: <span>{{ player.get_this_years_runner_ups }}</span></p></li>

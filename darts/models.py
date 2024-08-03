@@ -9,6 +9,11 @@ class Win(models.Model):
     runner_up = models.ForeignKey(settings.AUTH_USER_MODEL, to_field='id', on_delete=models.CASCADE, related_name='runner_ups')
     participants = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="games_played")
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['id'], name='win_id_index'),
+        ]
+
     def __str__(self):
         return str(self.date)
     

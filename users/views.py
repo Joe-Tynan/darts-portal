@@ -7,7 +7,7 @@ from .models import CustomUser
 # Create your views here.
 @api_view()
 def all_players_api_view(request):
-    return Response({'message': 'Hello World!'})
+    return Response({'message': 'Test!'})
 
 class PlayerDetailView(DetailView):
     model = CustomUser
