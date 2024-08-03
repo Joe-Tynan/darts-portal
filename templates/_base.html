@@ -18,13 +18,12 @@
                             <img src="{% static 'images/favicon.png' %}" alt="Pixel Kicks">
                         </a>
                         <ul class="menu m-0 p-0">
-                            <li><a href="{% url 'darts:dashboard' %}" title="Leaderboard">Killer Leaderboard</a></li>
-                            <li><a href="{% url 'darts:all_games_old' %}" title="Leaderboard">All Results</a></li>
-                            <li><a href="{% url 'darts:bets_old' %}" title="Leaderboard">Bets</a></li>
+                            <li><a href="{% url 'darts:dashboard' %}" title="Leaderboard">Leaderboard</a></li>
+                            <li><a href="{% url 'darts:all_games' %}" title="All Results">All Results</a></li>
                         </ul>
                     </div>
                     <div class="actions-container">
-                        <a href="{% url 'darts:submit_win_old' %}" class="button desktop" title="Submit Win">Submit a Game</a>
+                        <a href="{% url 'darts:submit_game' %}" class="button desktop" title="Submit Win">Submit a Game</a>
                         <a href="#" class="button mobile" title="Mobile Menu">Menu</a>
                     </div>
                 </nav>

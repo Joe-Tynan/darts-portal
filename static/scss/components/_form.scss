@@ -1,0 +1,27 @@
+form {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 64px;
+
+    label {
+        display: block;
+        color: #ffffff;
+        margin-bottom: 12px;
+        font-size: 20px;
+    }
+
+    select {
+        font-size: 18px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .button {
+        margin-top: 1em;
+    }
+
+    #id_participants {
+        height: 400px;
+    }
+}

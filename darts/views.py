@@ -43,6 +43,32 @@ def dashboard(request):
     
     return TemplateResponse(request, 'darts/dashboard.html', context)
 
+class AllResults(ListView):
+    model = Win
+    ordering = ['-date']
+    template_name = 'darts/all_results.html'
+    context_object_name = 'all_games'
+    paginate_by = 30
+
+class SubmitGameView(CreateView):
+    model = Win
+    fields = ['winner', 'runner_up', 'participants']
+    template_name = 'darts/submit_game.html'
+    form = WinCreateForm
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+
+        # Add in custom QuerySets
+        context["last_result"] = Win.objects.order_by('-date')[:1]
+
+        # Return context
+        return context
+
+    def get_success_url(self):
+        return reverse('darts:dashboard')
+
 # Old Views
 class LeagueTableView(ListView):
     model = CustomUser
@@ -108,8 +134,4 @@ class AllGamesView(ListView):
     ordering = ['-date']
     template_name = 'darts/old/all_games.html'
     context_object_name = 'all_games'
-
-class AllBetsView(ListView):
-    model = Bet
-    template_name = 'darts/old/all_bets.html'
-    context_object_name = 'all_bets'
+    paginate_by = 30

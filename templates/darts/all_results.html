@@ -1,0 +1,81 @@
+{% extends '../_base.html' %}
+
+{% block heading %}
+    <div class="flex-wrapper align-center">
+        <h1>All Results</h1>
+        <p class="white-text m-0">Showing the last 30 results.</p>
+    </div>
+{% endblock heading %}
+
+{% block main %}
+    <section class="stats-section">
+        <div class="primary-container">
+            <div class="stats-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <h3 class="pl-24">Date</h3>
+                            </th>
+                            <th>
+                                <h3>Winner</h3>
+                            </th>
+                            <th>
+                                <h3>Runner Up</h3>
+                            </th>
+                            <th>
+                                <h3 class="pr-24">Losers</h3>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for game in all_games %}
+                            <tr>
+                                <td class="narrow"><p class="white-text pl-24">{{ game.date|date:"D d M" }}</p></td>
+                                <td class="narrow"><p class="white-text">{{ game.winner.first_name }} {{ game.winner.last_name }}</p></td>
+                                <td class="narrow"><p class="white-text">{{ game.runner_up.first_name }} {{ game.runner_up.last_name }}</p></td>
+                                <td>
+                                    <p class="white-text pr-24">
+                                        {% for loser in game.participants.all %}
+                                            {% if loser.pk != game.winner.pk and loser.pk != game.runner_up.pk %}
+                                                <span>{{ loser.first_name }} {{ loser.last_name }}, </span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="primary-container">
+            <div class="stats-container">
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <div class="buttons">
+                                <a class="button" href="?page=1">&laquo; first</a>
+                                <a class="button" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                            </div>
+                        {% endif %}
+
+                        <span class="current white-text">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <div class="buttons">
+                                <a class="button" href="?page={{ page_obj.next_page_number }}">next</a>
+                                <a class="button" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                            </div>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock main %}

@@ -1,6 +1,8 @@
 @use '../variables';
 
 .stats-section {
+    position: relative;
+    z-index: 1;
 
     .league {
         flex: auto;

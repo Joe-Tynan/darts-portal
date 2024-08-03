@@ -1,0 +1,22 @@
+{% extends '../_base.html' %}
+
+{% block heading %}
+    <div class="flex-wrapper align-center">
+        <h1>Submit a Game</h1>
+        <p class="white-text m-0">Last game submitted on: {{ last_result.0.date|date:"l j F Y" }}</p>
+    </div>
+{% endblock heading %}
+
+{% block main %}
+    <section class="stats-section">
+        <div class="primary-container">
+            <div class="stats-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" class="button" value="Submit">
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock main %}

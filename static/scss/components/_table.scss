@@ -1,0 +1,31 @@
+@use '../variables';
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+    thead {
+
+        th {
+            text-align: left;
+            padding-bottom: 10px;
+        }
+    }
+
+    tbody {
+
+        tr {
+
+            &:nth-of-type(odd) {
+                background-color: #214dcf;
+            }
+        }
+
+        td {
+
+            &.narrow {
+                width: 15%;
+            }
+        }
+    }
+}

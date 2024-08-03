@@ -9,6 +9,14 @@
   padding: 0;
 }
 
+.pl-24 {
+  padding-left: 24px;
+}
+
+.pr-24 {
+  padding-right: 24px;
+}
+
 .bg-transparent {
   background-color: #efefef;
 }
@@ -196,6 +204,10 @@ footer {
   font-weight: 700;
 }
 
+.stats-section {
+  position: relative;
+  z-index: 1;
+}
 .stats-section .league {
   flex: auto;
 }
@@ -338,6 +350,59 @@ footer {
 .button:hover:after {
   transform: translateY(3px);
   right: -3px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table thead th {
+  text-align: left;
+  padding-bottom: 10px;
+}
+table tbody tr:nth-of-type(odd) {
+  background-color: #214dcf;
+}
+table tbody td.narrow {
+  width: 15%;
+}
+
+.pagination {
+  width: 100%;
+}
+.pagination .step-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pagination .step-links .buttons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 64px;
+}
+form label {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+form select {
+  font-size: 18px;
+  width: 100%;
+  padding: 10px;
+}
+form .button {
+  margin-top: 1em;
+}
+form #id_participants {
+  height: 400px;
 }
 
 body {
