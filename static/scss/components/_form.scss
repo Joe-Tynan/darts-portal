@@ -24,4 +24,10 @@ form {
     #id_participants {
         height: 400px;
     }
+
+    &.inline {
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
 }

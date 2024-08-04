@@ -8,6 +8,10 @@
     }
 }
 
+.mb-10 {
+    margin-bottom: 10px;
+}
+
 .p-0 {
     padding: 0;
 }
@@ -33,6 +37,13 @@
     color: variables.$blue;
 }
 
+// Font Sizing
+.large-text {
+    font-size: 50px;
+    font-weight: 600;
+    margin: 10px 0 0 0;
+}
+
 // Width / Height
 .span {
     width: 100%;
@@ -56,6 +67,10 @@
 
 .align-center {
     align-items: center;
+}
+
+.direction-column {
+    flex-direction: column;
 }
 
 // Show / Hide

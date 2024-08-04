@@ -39,6 +39,9 @@ class CustomUser(AbstractUser):
     
     def get_this_years_runner_ups(self):
         return self.runner_ups.all().filter(date__contains=datetime.date.today().year).count()
+
+    def get_this_years_losses(self):
+        return self.games_played.filter(date__contains=datetime.date.today().year).exclude(winner__id=self.id).count()
     
     def get_this_years_games_played(self):
         return self.games_played.filter(date__contains=datetime.date.today().year).count()

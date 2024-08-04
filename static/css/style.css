@@ -5,6 +5,10 @@
   }
 }
 
+.mb-10 {
+  margin-bottom: 10px;
+}
+
 .p-0 {
   padding: 0;
 }
@@ -29,6 +33,12 @@
   color: #005aff;
 }
 
+.large-text {
+  font-size: 50px;
+  font-weight: 600;
+  margin: 10px 0 0 0;
+}
+
 .span {
   width: 100%;
 }
@@ -51,6 +61,10 @@
 
 .align-center {
   align-items: center;
+}
+
+.direction-column {
+  flex-direction: column;
 }
 
 .desktop {
@@ -403,6 +417,11 @@ form .button {
 }
 form #id_participants {
   height: 400px;
+}
+form.inline {
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 }
 
 body {
