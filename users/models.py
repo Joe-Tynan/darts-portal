@@ -75,7 +75,7 @@ class CustomUser(AbstractUser):
     # Stats Functions
     def get_win_ratio(self):
         if( self.games_played.count() > 0  ):
-            return round((self.wins.count() / self.games_played.count()), 1)
+            return round((self.wins.count() / self.games_played.count() * 100), 1)
         else:
             return 0
 
