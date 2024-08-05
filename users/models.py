@@ -113,7 +113,7 @@ class CustomUser(AbstractUser):
         last_game_played = self.games_played.order_by('-date').first()
 
         if( last_game_played != None ):
-            return round((251 * self.get_win_ratio()), 2)
+            return round((251 * self.get_win_ratio() / 100), 2)
         else:
             return 0
 
