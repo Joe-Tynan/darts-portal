@@ -28,7 +28,7 @@
                         <div class="flex-wrapper">
                             <div class="global-stats-container">
                                 {% for player in top_5_form %}
-                                    <p>{{ player.first_name }} {{ player.last_name }}: <span class="blue-text">{{ player.get_form_score|floatformat:1 }}</span></p>
+                                    <p>{{ player.get_form_emoji }} {{ player.first_name }} {{ player.last_name }}: <span class="blue-text">{{ player.get_form_score|floatformat:1 }}</span></p>
                                 {% endfor %}
                             </div>
                         </div>
