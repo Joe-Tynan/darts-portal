@@ -24,9 +24,16 @@ def dashboard(request):
 
     this_years_game_count = Win.objects.filter(date__contains=datetime.date.today().year).count()
 
+    this_years_player_count = 0
+    players = CustomUser.objects.all()
+
+    for player in players:
+        games_played = player.get_this_years_games_played()
+        this_years_player_count += games_played
+
     last_result = Win.objects.order_by('-date')[:1]
 
-    top_5_form= sorted( CustomUser.objects.exclude(plays_darts=False), key=lambda u: u.get_form_score(), reverse=True )[:5]
+    top_5_form = sorted( CustomUser.objects.exclude(plays_darts=False), key=lambda u: u.get_form_score(), reverse=True )[:5]
     top_5_win_ratio = sorted( CustomUser.objects.exclude(plays_darts=False), key=lambda u: u.get_win_ratio(), reverse=True )[:5]
 
     # Set up Context
@@ -36,6 +43,7 @@ def dashboard(request):
         'monthly_leaders': monthly_leaders,
         'weekly_leaders': weekly_leaders,
         'this_years_game_count': this_years_game_count,
+        'this_years_player_count': this_years_player_count,
         'last_result': last_result,
         'top_5_form': top_5_form,
         'top_5_win_ratio': top_5_win_ratio,

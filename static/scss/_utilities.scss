@@ -8,6 +8,10 @@
     }
 }
 
+.mt-24 {
+    margin-top: 24px;
+}
+
 .mb-10 {
     margin-bottom: 10px;
 }
@@ -87,4 +91,9 @@
     @media #{variables.$tablet} {
         display: none !important;
     }
+}
+
+// Display
+.block {
+    display: block;
 }

@@ -5,6 +5,10 @@
   }
 }
 
+.mt-24 {
+  margin-top: 24px;
+}
+
 .mb-10 {
   margin-bottom: 10px;
 }
@@ -80,6 +84,10 @@
   .mobile {
     display: none !important;
   }
+}
+
+.block {
+  display: block;
 }
 
 header {
