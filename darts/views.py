@@ -25,9 +25,9 @@ def dashboard(request):
     this_years_game_count = Win.objects.filter(date__contains=datetime.date.today().year).count()
 
     this_years_player_count = 0
-    players = CustomUser.objects.all()
+    total_players = CustomUser.objects.all()
 
-    for player in players:
+    for player in total_players:
         games_played = player.get_this_years_games_played()
         this_years_player_count += games_played
 
