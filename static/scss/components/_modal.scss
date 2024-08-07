@@ -1,0 +1,51 @@
+@use '../variables';
+
+.modal-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    max-height: 0;
+    overflow: hidden;
+    background-color: rgba(variables.$dark-blue, 0.95);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    .flex-container {
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+
+        .content-container {
+            background-color: variables.$white;
+            padding: 48px 100px;
+            border-radius: 8px;
+
+            h2 {
+                margin-bottom: 48px;
+            }
+
+            p {
+                font-weight: 600;
+            }
+
+            .button {
+                margin-top: 48px;
+                text-align: center;
+            }
+        }
+    }
+
+    &.active {
+        max-height: 100%;
+    }
+}
+
+.modal-open {
+    overflow: hidden;
+}

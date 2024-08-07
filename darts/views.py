@@ -31,7 +31,8 @@ def dashboard(request):
         games_played = player.get_this_years_games_played()
         this_years_player_count += games_played
 
-    last_result = Win.objects.order_by('-date')[:1]
+    last_result = Win.objects.latest('date')
+    print(last_result)
 
     top_5_form = sorted( CustomUser.objects.exclude(plays_darts=False), key=lambda u: u.get_form_score(), reverse=True )[:5]
     top_5_win_ratio = sorted( CustomUser.objects.exclude(plays_darts=False), key=lambda u: u.get_win_ratio(), reverse=True )[:5]

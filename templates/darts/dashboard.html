@@ -13,12 +13,12 @@
             <div class="flex-wrapper align-stretch">
                 <div class="stats-container full-width">
                     <div class="span">
-                        <h3>{{ last_result.0.date|date:"l j F" }}</h3>
+                        <h3>{{ last_result.date|date:"l j F" }}</h3>
                         <div class="flex-wrapper">
                             <div class="global-stats-container">
-                                <p>Winner: <span class="blue-text">{{ last_result.0.winner.first_name }} {{ last_result.0.winner.last_name }}</span></p>
-                                <p>Runner Up: <span class="blue-text">{{ last_result.0.runner_up.first_name }} {{ last_result.0.runner_up.last_name }}</span></p>
-                                <a class="mt-24 blue-text block" href="{% url 'darts:all_games' %}">Full Results</a>
+                                <p>Winner: <span class="blue-text">{{ last_result.winner.first_name }} {{ last_result.winner.last_name }}</span></p>
+                                <p>Runner Up: <span class="blue-text">{{ last_result.runner_up.first_name }} {{ last_result.runner_up.last_name }}</span></p>
+                                <a id="toggle-modal" class="mt-24 blue-text block" href="#">Full Results</a>
                             </div>
                         </div>
                     </div>
@@ -148,6 +148,25 @@
             </div>
         </div>
     </section>
+
+    <div id="last-result-modal" class="modal-section">
+        <div class="flex-container">
+            <div class="content-container">
+                <h2 class="blue-text">Did Well</h2>
+                <p>Winner: <span class="blue-text">{{ last_result.winner.first_name }} {{ last_result.winner.last_name }}</span></p>
+                <p>Runner Up: <span class="blue-text">{{ last_result.runner_up.first_name }} {{ last_result.runner_up.last_name }}</span></p>
+                <a id="close-modal" class="button" href="#">Close</a>
+            </div>
+            <div class="content-container">
+                <h2 class="blue-text">Didn't Do So Well</h2>
+                {% for player in last_result.participants.all %}
+                    {% if player.last_name != last_result.winner.last_name and player.last_name != last_result.runner_up.last_name %}
+                        <p>{{ player.first_name }} {{ player.last_name }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock main %}
 
 {% block sidebar %}

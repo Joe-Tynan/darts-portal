@@ -432,6 +432,50 @@ form.inline {
   gap: 24px;
 }
 
+.modal-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  max-height: 0;
+  overflow: hidden;
+  background-color: rgba(25, 34, 74, 0.95);
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+.modal-section .flex-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.modal-section .flex-container .content-container {
+  background-color: #ffffff;
+  padding: 48px 100px;
+  border-radius: 8px;
+}
+.modal-section .flex-container .content-container h2 {
+  margin-bottom: 48px;
+}
+.modal-section .flex-container .content-container p {
+  font-weight: 600;
+}
+.modal-section .flex-container .content-container .button {
+  margin-top: 48px;
+  text-align: center;
+}
+.modal-section.active {
+  max-height: 100%;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
 body {
   background-color: #19224a;
   font-family: "IBM Plex Sans", sans-serif;

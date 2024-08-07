@@ -31,3 +31,23 @@ for(let i = 0; i < allGamesTable.length; i++) {
         lastLoser.innerHTML = html;
     }
 }
+
+let modalToggle = document.querySelector('#toggle-modal');
+
+modalToggle.addEventListener('click', function() {
+    let body = document.querySelector('body');
+    let modal = document.querySelector('.modal-section');
+
+    modal.classList.add('active');
+    body.classList.add('modal-open');
+});
+
+let closeModalButton = document.querySelector('#close-modal');
+
+closeModalButton.addEventListener('click', function() {
+    let body = document.querySelector('body');
+    let modal = document.querySelector('.modal-section');
+
+    modal.classList.remove('active');
+    body.classList.remove('modal-open');
+});
