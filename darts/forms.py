@@ -2,8 +2,9 @@ from django import forms
 
 from users.models import CustomUser
 
+
 class WinCreateForm(forms.Form):
     participants = forms.ModelMultipleChoiceField(
-        queryset=CustomUser.objects.all(),
-        widget=forms.CheckboxSelectMultiple
+        queryset=CustomUser.objects.exclude(plays_darts=False),
+        widget=forms.CheckboxSelectMultiple(),
     )
