@@ -8,8 +8,9 @@ services:
       - DEBUG=True
     volumes:
       - .:/code
+      - static_volume:/code/staticfiles
     ports:
-      - 8000:8000
+      - "8000:8000"
     depends_on:
       - db
 
@@ -18,5 +19,15 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - static_volume:/code/staticfiles
+    depends_on:
+      - web
+
 volumes:
   postgres_data:
+  static_volume:

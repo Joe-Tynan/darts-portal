@@ -4,15 +4,12 @@ from datetime import timedelta
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
-from django.template.defaultfilters import slugify
 
 from darts.models import Win
 
 class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=200, blank=True)
     plays_darts = models.BooleanField(default=True)
-    #slug = models.SlugField(null=True, blank=True, unique=True)
-    #headshot = models.ImageField(upload_to='headshots/', blank=True)
 
     class Meta:
         ordering = ['first_name', 'last_name']

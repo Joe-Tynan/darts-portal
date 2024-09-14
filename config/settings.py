@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'darts.pixelkicks.co.uk', 'pure-bayou-92686-4db9a1b9e2ce.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django', 'darts.pixelkicks.co.uk', 'pure-bayou-92686-4db9a1b9e2ce.herokuapp.com']
 
 
 # Application definition
@@ -193,6 +193,16 @@ CSP_INCLUDE_NONCE_IN = ['script-src']
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+
+# CSRF
+
+CSRF_TRUSTED_ORIGINS = ['https://*.pixelkicks.co.uk', 'http://127.0.0.1']
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+USE_X_FORWARDED_HOST = True
+
 
 # Heroku
 
