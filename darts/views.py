@@ -19,8 +19,8 @@ def dashboard(request):
     players = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), num_runner_ups=Count('runner_ups', distinct=True), last_win=Max('wins__date'), last_runner_up=Max('runner_ups__date'), num_games_played=Count('games_played', distinct=True)).order_by('-num_wins', 'last_win', '-num_runner_ups', 'last_runner_up', '-num_games_played', 'first_name', 'last_name').distinct()
 
     # Retrieve Other Stats
-    monthly_leaders = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__month=datetime.date.today().month).order_by('-num_wins', 'last_win').distinct()[:3]
-    weekly_leaders = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__week=datetime.date.today().isocalendar()[1]).order_by('-num_wins', 'last_win').distinct()[:3]
+    monthly_leaders = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__month=datetime.date.today().month, wins__date__year=datetime.date.today().year).order_by('-num_wins', 'last_win').distinct()[:3]
+    weekly_leaders = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__week=datetime.date.today().isocalendar()[1], wins__date__year=datetime.date.today().year).order_by('-num_wins', 'last_win').distinct()[:3]
 
     this_years_game_count = Win.objects.filter(date__contains=datetime.date.today().year).count()
 
@@ -34,8 +34,8 @@ def dashboard(request):
     last_result = Win.objects.latest('date')
     print(last_result)
 
-    top_5_form = sorted( CustomUser.objects.exclude(plays_darts=False), key=lambda u: u.get_form_score(), reverse=True )[:5]
-    top_5_win_ratio = sorted( CustomUser.objects.exclude(plays_darts=False), key=lambda u: u.get_win_ratio(), reverse=True )[:5]
+    top_5_form = sorted( CustomUser.objects.exclude(plays_darts=False).filter(wins__date__year=datetime.date.today().year), key=lambda u: u.get_form_score(), reverse=True )[:5]
+    top_5_win_ratio = sorted( CustomUser.objects.exclude(plays_darts=False).filter(wins__date__year=datetime.date.today().year), key=lambda u: u.get_win_ratio(), reverse=True )[:5]
 
     # Set up Context
     context = {
@@ -144,3 +144,11 @@ class AllGamesView(ListView):
     template_name = 'darts/old/all_games.html'
     context_object_name = 'all_games'
     paginate_by = 30
+
+def wrapped(request, year):
+
+    context = {
+        'year': year
+    }
+
+    return TemplateResponse(request, 'darts/wrapped.html', context)

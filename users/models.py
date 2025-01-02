@@ -74,8 +74,8 @@ class CustomUser(AbstractUser):
 
     # Stats Functions
     def get_win_ratio(self):
-        if( self.games_played.count() > 0  ):
-            return round((self.wins.count() / self.games_played.count() * 100), 1)
+        if( self.games_played.filter(date__contains=datetime.date.today().year).count() > 0  ):
+            return round((self.wins.filter(date__contains=datetime.date.today().year).count() / self.games_played.filter(date__contains=datetime.date.today().year).count() * 100), 1)
         else:
             return 0
 
@@ -110,7 +110,7 @@ class CustomUser(AbstractUser):
             return 'NEVER!'
 
     def get_predicted_wins(self):
-        last_game_played = self.games_played.order_by('-date').first()
+        last_game_played = self.games_played.filter(date__contains=datetime.date.today().year).order_by('-date').first()
 
         if( last_game_played != None ):
             return round((251 * self.get_win_ratio() / 100), 2)
@@ -119,7 +119,7 @@ class CustomUser(AbstractUser):
 
     def get_form(self):
         results = {}
-        last_10_games = self.games_played.order_by('-date')[:10]
+        last_10_games = self.games_played.filter(date__contains=datetime.date.today().year).order_by('-date')[:10]
 
         for game in last_10_games:
             if game.winner.id == self.id:
@@ -133,7 +133,7 @@ class CustomUser(AbstractUser):
     
     def get_form_score(self):
         form = 0
-        last_10_games = self.games_played.order_by('-date')[:10]
+        last_10_games = self.games_played.filter(date__contains=datetime.date.today().year).order_by('-date')[:10]
 
         for game in last_10_games:
             if game.winner.id == self.id:
