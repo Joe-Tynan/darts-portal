@@ -2,7 +2,7 @@ import datetime
 
 from django.template.response import TemplateResponse
 from django.views.generic import ListView, CreateView
-from django.db.models import Count, Max
+from django.db.models import Count, Max, Q
 from django.urls import reverse
 
 from users.models import CustomUser
@@ -16,11 +16,30 @@ def dashboard(request):
     request.session['visit_count'] = visit_count + 1
 
     # Set up Leaderboard & Retrieve Players
-    players = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', distinct=True), num_runner_ups=Count('runner_ups', distinct=True), last_win=Max('wins__date'), last_runner_up=Max('runner_ups__date'), num_games_played=Count('games_played', distinct=True)).order_by('-num_wins', 'last_win', '-num_runner_ups', 'last_runner_up', '-num_games_played', 'first_name', 'last_name').distinct()
+    players = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins', filter=Q(wins__date__year=datetime.date.today().year), distinct=True), num_runner_ups=Count('runner_ups', filter=Q(wins__date__year=datetime.date.today().year), distinct=True), last_win=Max('wins__date'), last_runner_up=Max('runner_ups__date'), num_games_played=Count('games_played', filter=Q(wins__date__year=datetime.date.today().year), distinct=True)).order_by('-num_wins', 'last_win', '-num_runner_ups', 'last_runner_up', '-num_games_played', 'first_name', 'last_name').distinct()
 
     # Retrieve Other Stats
-    monthly_leaders = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__month=datetime.date.today().month, wins__date__year=datetime.date.today().year).order_by('-num_wins', 'last_win').distinct()[:3]
-    weekly_leaders = CustomUser.objects.exclude(plays_darts=False).annotate(num_wins=Count('wins'), last_win=Max('wins__date')).filter(wins__date__week=datetime.date.today().isocalendar()[1], wins__date__year=datetime.date.today().year).order_by('-num_wins', 'last_win').distinct()[:3]
+    monthly_leaders = (
+        CustomUser.objects.exclude(plays_darts=False)
+        .annotate(
+            num_wins=Count('wins', filter=Q(wins__date__year=datetime.date.today().year) & Q(wins__date__month=datetime.date.today().month)),
+            last_win=Max('wins__date', filter=Q(wins__date__year=datetime.date.today().year) & Q(wins__date__month=datetime.date.today().month))
+        )
+        .filter(num_wins__gt=0)
+        .order_by('-num_wins', 'last_win')
+        [:3]
+    )
+
+    weekly_leaders = (
+        CustomUser.objects.exclude(plays_darts=False)
+        .annotate(
+            num_wins=Count('wins', filter=Q(wins__date__year=datetime.date.today().year) & Q(wins__date__week=datetime.date.today().isocalendar()[1])),
+            last_win=Max('wins__date', filter=Q(wins__date__year=datetime.date.today().year) & Q(wins__date__week=datetime.date.today().isocalendar()[1]))
+        )
+        .filter(num_wins__gt=0)
+        .order_by('-num_wins', 'last_win')
+        [:3]
+    )
 
     this_years_game_count = Win.objects.filter(date__contains=datetime.date.today().year).count()
 
@@ -32,7 +51,6 @@ def dashboard(request):
         this_years_player_count += games_played
 
     last_result = Win.objects.latest('date')
-    print(last_result)
 
     top_5_form = sorted( CustomUser.objects.exclude(plays_darts=False).filter(wins__date__year=datetime.date.today().year), key=lambda u: u.get_form_score(), reverse=True )[:5]
     top_5_win_ratio = sorted( CustomUser.objects.exclude(plays_darts=False).filter(wins__date__year=datetime.date.today().year), key=lambda u: u.get_win_ratio(), reverse=True )[:5]
