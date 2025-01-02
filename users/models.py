@@ -47,7 +47,10 @@ class CustomUser(AbstractUser):
         games_played_by_user = self.games_played.filter(date__contains=datetime.date.today().year).count()
         total_games_played = Win.objects.filter(date__contains=datetime.date.today().year).count()
 
-        return round(((games_played_by_user / total_games_played) * 100), 1)
+        if (total_games_played > 0):
+            return round(((games_played_by_user / total_games_played) * 100), 1)
+        else:
+            return 0
     
     # Monthly Functions
     def get_this_months_wins(self):
