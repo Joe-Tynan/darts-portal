@@ -70,7 +70,7 @@
                     <div class="league">
                         <h2>Champions League</h2>
                         <ul class="m-0">
-                            {% for player in players|slice:":4" %}
+                            {% for player in players|slice:":3" %}
                                 <li class="player-card">
                                     <p>{{ player.get_form_emoji }} {{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
                                     <p class="game-info">(P{{ player.get_this_years_games_played }} RU{{ player.get_this_years_runner_ups }}) <span class="win-count">{{ player.get_this_years_wins }}</span></p>
@@ -81,7 +81,7 @@
                     <div class="league">
                         <h2>Premier League</h2>
                         <ul class="m-0">
-                            {% for player in players|slice:"4:8" %}
+                            {% for player in players|slice:"3:6" %}
                                 <li class="player-card">
                                     <p>{{ player.get_form_emoji }} {{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
                                     <p class="game-info">(P{{ player.get_this_years_games_played }} RU{{ player.get_this_years_runner_ups }}) <span class="win-count">{{ player.get_this_years_wins }}</span></p>
@@ -92,7 +92,7 @@
                     <div class="league">
                         <h2>Championship</h2>
                         <ul class="m-0">
-                            {% for player in players|slice:"8:12" %}
+                            {% for player in players|slice:"6:9" %}
                                 <li class="player-card">
                                     <p>{{ player.get_form_emoji }} {{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
                                     <p class="game-info">(P{{ player.get_this_years_games_played }} RU{{ player.get_this_years_runner_ups }}) <span class="win-count">{{ player.get_this_years_wins }}</span></p>
@@ -103,7 +103,7 @@
                     <div class="league">
                         <h2>Vanarama</h2>
                         <ul class="m-0">
-                            {% for player in players|slice:"12:16" %}
+                            {% for player in players|slice:"9:" %}
                                 <li class="player-card">
                                     <p>{{ player.get_form_emoji }} {{ player.first_name }}{% if player.nickname %} <span>"{{ player.nickname }}"</span> {% endif %} {{ player.last_name }}</p>
                                     <p class="game-info">(P{{ player.get_this_years_games_played }} RU{{ player.get_this_years_runner_ups }}) <span class="win-count">{{ player.get_this_years_wins }}</span></p>
