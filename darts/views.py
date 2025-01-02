@@ -52,7 +52,15 @@ def dashboard(request):
 
     last_result = Win.objects.latest('date')
 
-    top_5_form = sorted( CustomUser.objects.exclude(plays_darts=False).filter(wins__date__year=datetime.date.today().year), key=lambda u: u.get_form_score(), reverse=True )[:5]
+    top_5_form = sorted (
+        CustomUser.objects.exclude(plays_darts=False)
+        #.filter(wins__date__year=datetime.date.today().year)
+        .filter(Q(wins__date__year=datetime.date.today().year) | Q(runner_ups__date__year=datetime.date.today().year))
+        .distinct(),
+        key=lambda u: u.get_form_score(),
+        reverse=True
+    )[:5]
+
     top_5_win_ratio = sorted( CustomUser.objects.exclude(plays_darts=False).filter(wins__date__year=datetime.date.today().year), key=lambda u: u.get_win_ratio(), reverse=True )[:5]
 
     # Set up Context
