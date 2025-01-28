@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('all-games/', AllResults.as_view(), name='all_games'),
     path('submit-game/', SubmitGameView.as_view(), name='submit_game'),
+    path('wrapped/<int:year>/', views.wrapped, name='wrapped'),
 
     # Old URLs
     path('old/', LeagueTableView.as_view(), name='dashboard_old'),
