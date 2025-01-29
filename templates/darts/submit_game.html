@@ -13,7 +13,24 @@
             <div class="stats-container">
                 <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <div>
+                        <label>{{ form.winner.label }}</label>
+                        {{ form.winner }}
+                    </div>
+                    <div>
+                        <label>{{ form.runner_up.label }}</label>
+                        {{ form.runner_up }}
+                    </div>
+                    <div>
+                        <label>{{ form.participants.label }}</label>
+                        <div class="checkbox-wrapper">
+                            {% for checkbox in form.participants %}
+                                <div class="checkbox">
+                                    {{ checkbox.tag }} {{ checkbox.choice_label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                     <input type="submit" class="button" value="Submit">
                 </form>
             </div>

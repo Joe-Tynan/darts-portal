@@ -91,6 +91,32 @@ DATABASES = {
 }
 
 
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -197,7 +223,7 @@ CORS_ALLOWED_ORIGINS = [
 
 # CSRF
 
-CSRF_TRUSTED_ORIGINS = ['https://*.pixelkicks.co.uk', 'http://127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://*.pixelkicks.co.uk', 'http://127.0.0.1', 'http://localhost']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 

@@ -36,7 +36,8 @@ header {
     
                     li {
     
-                        a {
+                        a, button {
+                            display: flex;
                             color: variables.$white;
                             text-decoration: none;
                             padding: 10px;
@@ -44,10 +45,17 @@ header {
                             font-size: 14px;
                             font-weight: 500;
                             transition: all ease-in-out 0.5s;
+                            border: 0;
     
                             &:hover {
                                 background-color: variables.$blue;
+                                cursor: pointer;
                             }
+                        }
+
+                        button {
+                            background-color: transparent;
+                            font-family: variables.$font;
                         }
                     }
                 }

@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    command: gunicorn config.wsgi -b 0.0.0.0:8000
+    command: bash -c "python manage.py collectstatic --noinput && gunicorn config.wsgi -b 0.0.0.0:8000"
     environment:
       - SECRET_KEY=django-insecure-^+v=tpcw8e+aq1zc(j-1qf5%w*z^a-5*zfjeb!jxy(t=zv*bdg
       - ENVIRONMENT=development
@@ -9,8 +9,8 @@ services:
     volumes:
       - .:/code
       - static_volume:/code/staticfiles
-    ports:
-      - "8000:8000"
+    #ports:
+    # - "8000:8000" # REMOVE this line to avoid exposing 8000 directly. We only want to export 80 so that we go through Nginx!
     depends_on:
       - db
 

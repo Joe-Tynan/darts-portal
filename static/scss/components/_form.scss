@@ -1,3 +1,5 @@
+@use '../variables';
+
 form {
     display: flex;
     justify-content: space-between;
@@ -6,7 +8,7 @@ form {
 
     label {
         display: block;
-        color: #ffffff;
+        color: variables.$white;
         margin-bottom: 12px;
         font-size: 20px;
     }
@@ -21,8 +23,14 @@ form {
         margin-top: 1em;
     }
 
-    #id_participants {
-        height: 400px;
+    .checkbox {
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: variables.$white;
+
+        &:last-of-type() {
+            margin-bottom: 0;
+        }
     }
 
     &.inline {

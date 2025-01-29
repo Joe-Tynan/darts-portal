@@ -121,7 +121,8 @@ header .primary-container nav .menu-container .menu {
     display: flex;
   }
 }
-header .primary-container nav .menu-container .menu li a {
+header .primary-container nav .menu-container .menu li a, header .primary-container nav .menu-container .menu li button {
+  display: flex;
   color: #ffffff;
   text-decoration: none;
   padding: 10px;
@@ -129,9 +130,15 @@ header .primary-container nav .menu-container .menu li a {
   font-size: 14px;
   font-weight: 500;
   transition: all ease-in-out 0.5s;
+  border: 0;
 }
-header .primary-container nav .menu-container .menu li a:hover {
+header .primary-container nav .menu-container .menu li a:hover, header .primary-container nav .menu-container .menu li button:hover {
   background-color: #005aff;
+  cursor: pointer;
+}
+header .primary-container nav .menu-container .menu li button {
+  background-color: transparent;
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 .sidebar {
@@ -423,8 +430,13 @@ form select {
 form .button {
   margin-top: 1em;
 }
-form #id_participants {
-  height: 400px;
+form .checkbox {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+form .checkbox:last-of-type() {
+  margin-bottom: 0;
 }
 form.inline {
   justify-content: center;

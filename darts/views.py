@@ -92,9 +92,8 @@ class AllResults(ListView):
 
 class SubmitGameView(CreateView):
     model = Win
-    fields = ['winner', 'runner_up', 'participants']
     template_name = 'darts/submit_game.html'
-    form = WinCreateForm
+    form_class = WinCreateForm
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
