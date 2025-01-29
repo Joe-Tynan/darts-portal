@@ -9,7 +9,7 @@ form {
     label {
         display: block;
         color: variables.$white;
-        margin-bottom: 12px;
+        margin-bottom: 24px;
         font-size: 20px;
     }
 
@@ -17,6 +17,10 @@ form {
         font-size: 18px;
         width: 100%;
         padding: 10px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     .button {
@@ -24,9 +28,24 @@ form {
     }
 
     .checkbox {
+        display: flex;
+        align-items: center;
         font-size: 18px;
         margin-bottom: 5px;
         color: variables.$white;
+
+       label {
+        margin-bottom: 0;
+        margin-left: 10px;
+
+            &:hover {
+                cursor: pointer;
+            }
+       }
+
+        &:hover {
+            cursor: pointer;
+        }
 
         &:last-of-type() {
             margin-bottom: 0;

@@ -26,7 +26,8 @@
                         <div class="checkbox-wrapper">
                             {% for checkbox in form.participants %}
                                 <div class="checkbox">
-                                    {{ checkbox.tag }} {{ checkbox.choice_label }}
+                                    <input type="checkbox" id="{{ checkbox.id_for_label }}" name="{{ checkbox.name }}" value="{{ checkbox.value }}" {% if checkbox.checked %}checked{% endif %}>
+                                    <label for="{{ checkbox.id_for_label }}">{{ checkbox.choice_label }}</label>
                                 </div>
                             {% endfor %}
                         </div>

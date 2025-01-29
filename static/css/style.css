@@ -419,7 +419,7 @@ form {
 form label {
   display: block;
   color: #ffffff;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   font-size: 20px;
 }
 form select {
@@ -427,13 +427,28 @@ form select {
   width: 100%;
   padding: 10px;
 }
+form select:hover {
+  cursor: pointer;
+}
 form .button {
   margin-top: 1em;
 }
 form .checkbox {
+  display: flex;
+  align-items: center;
   font-size: 18px;
   margin-bottom: 5px;
   color: #ffffff;
+}
+form .checkbox label {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+form .checkbox label:hover {
+  cursor: pointer;
+}
+form .checkbox:hover {
+  cursor: pointer;
 }
 form .checkbox:last-of-type() {
   margin-bottom: 0;
