@@ -410,6 +410,21 @@ table tbody td.narrow {
   gap: 24px;
 }
 
+.form-validation {
+  background-color: red;
+  border-radius: 8px;
+  padding: 24px;
+}
+.form-validation .errorlist {
+  list-style-type: none;
+  padding-left: 0;
+}
+.form-validation .errorlist li {
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+}
+
 form {
   display: flex;
   justify-content: space-between;

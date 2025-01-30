@@ -10,6 +10,10 @@
 {% block main %}
     <section class="stats-section">
         <div class="primary-container">
+            {% if form.non_field_errors %}
+                <div class="form-validation">{{ form.non_field_errors }}</div>
+            {% endif %}
+
             <div class="stats-container">
                 <form method="post">
                     {% csrf_token %}

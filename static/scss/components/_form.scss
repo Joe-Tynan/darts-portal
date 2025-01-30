@@ -1,5 +1,22 @@
 @use '../variables';
 
+.form-validation {
+    background-color: variables.$red;
+    border-radius: 8px;
+    padding: 24px;
+
+    .errorlist {
+        list-style-type: none;
+        padding-left: 0;
+
+        li {
+            color: variables.$white;
+            font-weight: 600;
+            text-align: center;
+        }
+    }
+}
+
 form {
     display: flex;
     justify-content: space-between;
