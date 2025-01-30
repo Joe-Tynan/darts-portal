@@ -24,10 +24,10 @@
                     <div>
                         <label>{{ form.participants.label }}</label>
                         <div class="checkbox-wrapper">
-                            {% for checkbox in form.participants %}
+                            {% for value, label in form.participants.field.choices %}
                                 <div class="checkbox">
-                                    <input type="checkbox" id="{{ checkbox.id_for_label }}" name="{{ checkbox.name }}" value="{{ checkbox.value }}" {% if checkbox.checked %}checked{% endif %}>
-                                    <label for="{{ checkbox.id_for_label }}">{{ checkbox.choice_label }}</label>
+                                    <input type="checkbox" id="participants_{{ value }}" name="{{ form.participants.html_name }}" value="{{ value }}">
+                                    <label for="participants_{{ value }}">{{ label }}</label>
                                 </div>
                             {% endfor %}
                         </div>
